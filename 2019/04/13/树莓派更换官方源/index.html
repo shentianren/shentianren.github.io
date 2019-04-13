@@ -6,12 +6,12 @@
   <meta name="author" content="chancery">
   
   
-  <title>归档: 2019 | chancery的blog</title>
+  <title>树莓派更换官方源 | chancery的blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content>
+    <meta name="keywords" content="Linux,">
   
 
   
@@ -42,7 +42,7 @@
     welcome: {"enable":false,"interval":30},
     start_time: "2018-10-5",
     passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
-    is_post: false,
+    is_post: true,
     lock: false,
     author: "chancery",
     share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
@@ -160,31 +160,87 @@
 </nav>
 <div id="site-process"></div>
     <main>
-      <div class="timeline">
-  <h2 class="timeline-title">归档: 3篇</h2>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-04-13
+    </span>
+    
+      <span>
+        | <a href="/categories/Linux/"><i class="fa fa-bookmark"></i>Linux</a>
+      </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    树莓派更换官方源
+  </h1>
   
-    
-      <h3 class="timeline-subtitle">2019</h3>
-    
-    <div class="timeline-item">
-      <time>2019-04-13</time>
-      <a target="_self" href="/2019/04/13/树莓派更换官方源/">树莓派更换官方源</a>
-    </div>
+  <article class="passage-article">
+    <h1 id="树莓派3B-raspbin更新软件更换官方源"><a href="#树莓派3B-raspbin更新软件更换官方源" class="headerlink" title="树莓派3B+raspbin更新软件更换官方源"></a>树莓派3B+raspbin更新软件更换官方源</h1><p>​    第一次拿到树莓派，灰常激动，忙着开机，机器会弹窗提示你更新软件，结果更新了一下午，进度条才跑一半。原来是官方源国内访问过慢导致，下面更新一下软件源。<del>身处国外忽略</del></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pi@raspberrypi:~# lsb_release -a </span><br><span class="line">No LSB modules are available.</span><br><span class="line">Distributor ID: Raspbian</span><br><span class="line">Description:    Raspbian GNU/Linux 9.4 (stretch)</span><br><span class="line">Release:        9.4</span><br><span class="line">Codename:       stretch</span><br></pre></td></tr></table></figure>
+<p>strech说明现在是官方源。</p>
+<p>下面需要修改<strong>/etc/apt</strong>下的sources.list文件</p>
+<p>首先备份一下文件（不是必须</p>
+<p>sudo  cp /etc/apt/sources.list  /etc/apt/sources.list.bak</p>
+<p>然后使用vi/vim/nano修改sources.list文件      <strong>注意：树莓派中vi/vim的操作极其反人类，建议先重装vim</strong></p>
+<p>sudo apt-get remove vim-commom        //卸载vim</p>
+<p>sudo apt-get install vim                //安装新的vim</p>
+<p>然后就可以以德芙丝滑般的手感将官方源注释掉并添加以下源：（没有打广告）</p>
+<p>—阿里源</p>
+<p>deb <a href="http://mirrors.aliyun.com/raspbian/raspbian/" target="_blank" rel="noopener">http://mirrors.aliyun.com/raspbian/raspbian/</a> stretch main non-free contrib</p>
+<p>deb-src <a href="http://mirrors.aliyun.com/raspbian/raspbian/" target="_blank" rel="noopener">http://mirrors.aliyun.com/raspbian/raspbian/</a> stretch  main non-free contrib</p>
+<p>—中国科技大学源</p>
+<p>deb <a href="http://mirrors.ustc.edu.cn/raspbian/raspbian/" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/raspbian/raspbian/</a> stretch main contrib non-free rpi</p>
+<p>接着你会发现<strong>etc/apt/sources.list.d</strong>下面还有个raspi.list文件里也有官方源</p>
+<p>sudo vim /etc/apt/sources.list.d/raspi.list</p>
+<p>接着注释掉然后添加源</p>
+<p>最后！<strong>pi@raspberrypi:~<em># sudo apt-get update</em></strong>、</p>
+<h2 id="真香！"><a href="#真香！" class="headerlink" title="真香！"></a>真香！</h2><p># </p>
+
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#树莓派3B-raspbin更新软件更换官方源"><span class="toc-text">树莓派3B+raspbin更新软件更换官方源</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#真香！"><span class="toc-text">真香！</span></a></li></ol></li></ol>
+  </div>
+</aside>
   
-    
-    <div class="timeline-item">
-      <time>2019-04-09</time>
-      <a target="_self" href="/2019/04/09/第一篇博客/">小白有了自己的blog</a>
-    </div>
+    <aside class="passage-copyright">
+      <div>本文作者: 沈天任</div>
+      
+        <div>
+          原文链接: 
+          <a href target="_blank">http://shentianren.github.io/2019/04/13/树莓派更换官方源/</a>
+        </div>
+      
+      <div>
+        版权声明: 本博客所有文章除特别声明外, 均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议. 转载请注明出处!
+      </div>
+    </aside>
   
-    
-    <div class="timeline-item">
-      <time>2019-04-03</time>
-      <a target="_self" href="/2019/04/03/hello-world/">Hello World</a>
-    </div>
   
 </div>
+
     </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
     
     <div class="site-footer-wrapper">
   <footer class="site-footer">
@@ -262,16 +318,16 @@
     <a href="javascript:void(0);" data-enable="false">
       <i class="fa fa-arrow-left"></i>
     </a>
-    <a href="javascript:void(0);" data-enable="false">
+    <a href="/2019/04/09/第一篇博客/" data-enable="true">
       <i class="fa fa-arrow-right"></i>
     </a>
   </div>
   <div class="bottom-bar-right">
-    <a href="javascript:void(0);" data-enable="false" id="site-toc-show-btn">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
       <i class="fa fa-bars"></i>
     </a>
     
-      <a href="javascript:void(0);" data-enable="false">
+      <a href="#site-comment" data-enable="true">
         <i class="fa fa-commenting"></i>
       </a>
     
