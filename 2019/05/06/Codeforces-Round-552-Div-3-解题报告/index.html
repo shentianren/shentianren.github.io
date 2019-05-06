@@ -226,15 +226,15 @@
 <ul>
 <li>add D (only once), i. e. perform ai:=ai+D, or</li>
 <li>subtract D (only once), i. e. perform ai:=ai−D, or</li>
-<li>leave the value of 𝑎𝑖ai unchanged.</li>
+<li>leave the value of ai unchanged.</li>
 </ul>
 <p>It is possible that after an operation the value 𝑎𝑖ai becomes negative.</p>
 <p>Your goal is to choose such <strong>minimum non-negative integer</strong> D and perform changes in such a way, that all ai are equal (i.e. a1=a2=⋯=an)</p>
 <p>Print the required D or, if it is impossible to choose such value D, print -1.</p>
-<p>For example, for array [2,8][2,8] the value 𝐷=3D=3 is minimum possible because you can obtain the array [5,5][5,5] if you will add 𝐷D to 22 and subtract 𝐷D from 88. And for array [1,4,7,7][1,4,7,7] the value 𝐷=3D=3 is also minimum possible. You can add it to 11 and subtract it from 77 and obtain the array [4,4,4,4][4,4,4,4].</p>
+<p>For example, for array [2,8] the value 𝐷=3D=3 is minimum possible because you can obtain the array [5,5] if you will add D to 2 and subtract D from 8. And for array [1,4,7,7] the value D=3 is also minimum possible. You can add it to 1 and subtract it from 7 and obtain the array [4,4,4,4].</p>
 <p>Input</p>
-<p>The first line of the input contains one integer 𝑛n (1≤n≤100) — the number of elements in 𝑎a.</p>
-<p>The second line of the input contains 𝑛n integers 𝑎1,𝑎2,…,𝑎𝑛a1,a2,…,an (1≤ai≤100) — the sequence 𝑎a.</p>
+<p>The first line of the input contains one integer n (1≤n≤100) — the number of elements in 𝑎a.</p>
+<p>The second line of the input contains 𝑛n integers a1,a2,…,an (1≤ai≤100) — the sequence 𝑎a.</p>
 <p>Output</p>
 <p>Print one integer — the <strong>minimum non-negative integer</strong> value D such that if you add this value to some ai, subtract this value from some 𝑎𝑖ai and leave some ai without changes, ll obtained values become equal.</p>
 <p>If it is impossible to choose such value D, print -1.</p>
