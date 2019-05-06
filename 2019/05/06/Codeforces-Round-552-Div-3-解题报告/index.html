@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+  
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="author" content="chancery">
+  
+  
+  <title>Codeforces Round #552 (Div. 3)解题报告 | chancery的blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="ACM,">
+  
+
+  
+  <meta name="description" content="计算机 科技 程序员 ACM">
+
+  
+
+  
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+  
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"JebpbaGgM9yrgkWa6IQJXjAu-gzGzoHsz","appkey":"ildpRFnxjX8q1B5eSf8NL4xO","comment":true,"count":true,"timer":true},
+    welcome: {"enable":false,"interval":30},
+    start_time: "2018-10-5",
+    passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
+    is_post: true,
+    lock: false,
+    author: "chancery",
+    share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/"
+  };
+</script>
+
+  <script src="/vendor/sha256.min.js"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/index.js"></script>
+<script src="/vendor/qrcode.min.js"></script>
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+  
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/styles/components/highlight/highlight.css">
+
+  
+</head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/">chancery</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | 一只小菜鸡</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/" target="_self">首页</a>
+      
+        <a href="/archives/" target="_self">归档</a>
+      
+        <a href="/tags/" target="_self">标签</a>
+      
+        <a href="/categories/" target="_self">分类</a>
+      
+        <a href="/friends/" target="_self">友链</a>
+      
+        <a href="/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/shentianren/" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-05-06
+    </span>
+    
+      <span>
+        | <a href="/categories/ACM/"><i class="fa fa-bookmark"></i>ACM</a>
+      </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    Codeforces Round #552 (Div. 3)解题报告
+  </h1>
+  
+  <article class="passage-article">
+    <h2 id="A-Restoring-Three-Numbers"><a href="#A-Restoring-Three-Numbers" class="headerlink" title="A. Restoring Three Numbers"></a>A. Restoring Three Numbers</h2><p>time limit per test</p>
+<p>1 second</p>
+<p>memory limit per test</p>
+<p>256 megabytes</p>
+<p>input</p>
+<p>standard input</p>
+<p>output</p>
+<p>standard output</p>
+<p>Polycarp has guessed three positive integers a, b and c. He keeps these numbers in secret, but he writes down four numbers on a board in arbitrary order — their pairwise sums (three numbers) and sum of all three numbers (one number). So, there are four numbers on a board in random order: a+b, a+c, b+c and a+b+c.</p>
+<p>You have to guess three numbers a, b and c using given numbers. Print three guessed integers in any order.</p>
+<p>Pay attention that some given numbers a, b and c can be equal (it is also possible that a=b=c).</p>
+<p>Input</p>
+<p>The only line of the input contains four positive integers x1,x2,x3,x4 (2≤𝑥𝑖≤1092≤xi≤109) — numbers written on a board in random order. It is guaranteed that the answer exists for the given number x1,x2,x3,x4.</p>
+<p>Output</p>
+<p>Print such positive integers 𝑎a, 𝑏b and 𝑐c that four numbers written on a board are values a+b, a+c, b+c and a+b+c written in some order. Print 𝑎a, 𝑏b and 𝑐c in any order. If there are several answers, you can print any. It is guaranteed that the answer exists.</p>
+<p>Examples</p>
+<p>input</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3 6 5 4</span><br></pre></td></tr></table></figure>
+<p>output</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 1 3</span><br></pre></td></tr></table></figure>
+<p>input</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">40 40 40 60</span><br></pre></td></tr></table></figure>
+<p>output</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">20 20 20</span><br></pre></td></tr></table></figure>
+<p>input</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">201 101 101 200</span><br></pre></td></tr></table></figure>
+<p>output</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 100 100</span><br></pre></td></tr></table></figure>
+<p><strong>题意</strong>：输出三个数使得输入的四个数为输出三个数的两两只和和总和</p>
+<p><strong>题解</strong>：直接排序找出总和(总和一定是最大的)，用总和分别减去剩余三个数，即是结果。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">4</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++)&#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	sort(a,a+<span class="number">4</span>);</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;a[<span class="number">3</span>]-a[<span class="number">0</span>]&lt;&lt;<span class="string">" "</span>&lt;&lt;a[<span class="number">3</span>]-a[<span class="number">1</span>]&lt;&lt;<span class="string">" "</span>&lt;&lt;a[<span class="number">3</span>]-a[<span class="number">2</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="B-Make-Them-Equal"><a href="#B-Make-Them-Equal" class="headerlink" title="B. Make Them Equal"></a>B. Make Them Equal</h2><p>time limit per test</p>
+<p>2 seconds</p>
+<p>memory limit per test</p>
+<p>256 megabytes</p>
+<p>input</p>
+<p>standard input</p>
+<p>output</p>
+<p>standard output</p>
+<p>You are given a sequence a1,a2,…,an consisting of 𝑛n integers.</p>
+<p>You can choose any non-negative integer D (i.e. D≥0), and for each 𝑎𝑖ai you can:</p>
+<ul>
+<li>add D (only once), i. e. perform ai:=ai+D, or</li>
+<li>subtract D (only once), i. e. perform ai:=ai−D, or</li>
+<li>leave the value of 𝑎𝑖ai unchanged.</li>
+</ul>
+<p>It is possible that after an operation the value 𝑎𝑖ai becomes negative.</p>
+<p>Your goal is to choose such <strong>minimum non-negative integer</strong> D and perform changes in such a way, that all ai are equal (i.e. a1=a2=⋯=an)</p>
+<p>Print the required D or, if it is impossible to choose such value D, print -1.</p>
+<p>For example, for array [2,8][2,8] the value 𝐷=3D=3 is minimum possible because you can obtain the array [5,5][5,5] if you will add 𝐷D to 22 and subtract 𝐷D from 88. And for array [1,4,7,7][1,4,7,7] the value 𝐷=3D=3 is also minimum possible. You can add it to 11 and subtract it from 77 and obtain the array [4,4,4,4][4,4,4,4].</p>
+<p>Input</p>
+<p>The first line of the input contains one integer 𝑛n (1≤n≤100) — the number of elements in 𝑎a.</p>
+<p>The second line of the input contains 𝑛n integers 𝑎1,𝑎2,…,𝑎𝑛a1,a2,…,an (1≤ai≤100) — the sequence 𝑎a.</p>
+<p>Output</p>
+<p>Print one integer — the <strong>minimum non-negative integer</strong> value D such that if you add this value to some ai, subtract this value from some 𝑎𝑖ai and leave some ai without changes, ll obtained values become equal.</p>
+<p>If it is impossible to choose such value D, print -1.</p>
+<p>Examples</p>
+<p>input</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">1 4 4 7 4 1</span><br></pre></td></tr></table></figure>
+<p>output</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+<p>input</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">2 2 5 2 5</span><br></pre></td></tr></table></figure>
+<p>output</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+<p>input</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">1 3 3 7</span><br></pre></td></tr></table></figure>
+<p>output</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-1</span><br></pre></td></tr></table></figure>
+<p>input</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">2 8</span><br></pre></td></tr></table></figure>
+<p>output</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+<p><strong>题意</strong>：给出一个序列，通过加或者减去某个数或者不变，使得序列中各个数相等。求这个数的最小值。</p>
+<p><strong>题解</strong>：找规律，通过手写数据发现序列去重后序列大小大于3时候没有符合条件的数，然后剩下三种情况枚举。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">109</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> b[<span class="number">109</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> str;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;str;</span><br><span class="line">		a[str]=str;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">100</span>;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(a[i]!=<span class="number">0</span>)&#123;</span><br><span class="line">			b[ans++]=a[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	sort(b,b+ans);</span><br><span class="line">	<span class="keyword">if</span>(ans==<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;<span class="string">"0"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> c=b[<span class="number">1</span>]-b[<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">if</span>(ans==<span class="number">2</span>&amp;&amp;c%<span class="number">2</span>==<span class="number">0</span>)&#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;(b[<span class="number">1</span>]-b[<span class="number">0</span>])/<span class="number">2</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(ans==<span class="number">2</span>&amp;&amp;c%<span class="number">2</span>!=<span class="number">0</span>)&#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;b[<span class="number">1</span>]-b[<span class="number">0</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(ans==<span class="number">3</span>&amp;&amp;c==(b[<span class="number">2</span>]-b[<span class="number">1</span>]))&#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;c&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;<span class="string">"-1"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>C. Gourmet Cat</p>
+<p>time limit per test</p>
+<p>1 second</p>
+<p>memory limit per test</p>
+<p>256 megabytes</p>
+<p>input</p>
+<p>standard input</p>
+<p>output</p>
+<p>standard output</p>
+<p>Polycarp has a cat and his cat is a real gourmet! Dependent on a day of the week he eats certain type of food:</p>
+<ul>
+<li>on Mondays, Thursdays and Sundays he eats <em>fish food</em>;</li>
+<li>on Tuesdays and Saturdays he eats <em>rabbit stew</em>;</li>
+<li>on other days of week he eats <em>chicken stake</em>.</li>
+</ul>
+<p>Polycarp plans to go on a trip and already packed his backpack. His backpack contains:</p>
+<ul>
+<li>a daily rations of <em>fish food</em>;</li>
+<li>b daily rations of <em>rabbit stew</em>;</li>
+<li>c daily rations of <em>chicken stakes</em>.</li>
+</ul>
+<p>Polycarp has to choose such day of the week to start his trip that his cat can eat without additional food purchases as long as possible. Print the maximum number of days the cat can eat in a trip without additional food purchases, if Polycarp chooses the day of the week to start his trip optimally.</p>
+<p>Input</p>
+<p>The first line of the input contains three positive integers a, b and c (1≤a,b,c≤7⋅10^8) — the number of daily rations of <em>fish food</em>, <em>rabbit stew</em> and <em>chicken stakes</em> in Polycarps backpack correspondingly.</p>
+<p>Output</p>
+<p>Print the maximum number of days the cat can eat in a trip without additional food purchases, if Polycarp chooses the day of the week to start his trip optimally.</p>
+<p>Examples</p>
+<p>input</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 1 1</span><br></pre></td></tr></table></figure>
+<p>output</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
+<p>input</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3 2 2</span><br></pre></td></tr></table></figure>
+<p>output</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7</span><br></pre></td></tr></table></figure>
+<p>input</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 100 1</span><br></pre></td></tr></table></figure>
+<p>output</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+<p>Input</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">30 20 10</span><br></pre></td></tr></table></figure>
+<p>output</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">39</span><br></pre></td></tr></table></figure>
+<p>Note</p>
+<p>In the first example the best day for start of the trip is Sunday. In this case, during Sunday and Monday the cat will eat <em>fish food</em>, during Tuesday — <em>rabbit stew</em> and during Wednesday — <em>chicken stake</em>. So, after four days of the trip all food will be eaten.</p>
+<p>In the second example Polycarp can start his trip in any day of the week. In any case there are food supplies only for one week in Polycarps backpack.</p>
+<p>In the third example Polycarp can start his trip in any day, excluding Wednesday, Saturday and Sunday. In this case, the cat will eat three different dishes in three days. Nevertheless that after three days of a trip there will be 9999 portions of <em>rabbit stew</em> in a backpack, can cannot eat anything in fourth day of a trip.</p>
+<p><strong>题意</strong>：一个人有一只猫，猫在周一周四周日吃鱼肉，在周二周六吃兔肉，在周三周五吃鸡肉。下面给出各种食物的份数。这个人计划出去旅行，开始时间任意，求最多能旅行的天数。</p>
+<p><strong>题解</strong>：主要还是找规律，枚举。能凑成满周的先凑成满周，剩余的食物肯定不足一整周使用，所以剩下的食物用来枚举出来就可以了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> cns=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> a,b,c;</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b&gt;&gt;c;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(a&lt;<span class="number">3</span>||b&lt;<span class="number">2</span>||c&lt;<span class="number">2</span>)<span class="keyword">break</span>;</span><br><span class="line">			a-=<span class="number">3</span>;</span><br><span class="line">			b-=<span class="number">2</span>;</span><br><span class="line">			c-=<span class="number">2</span>;</span><br><span class="line">			ans+=<span class="number">7</span>;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">14</span>;i++)&#123;</span><br><span class="line">		sum=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> aa=a;</span><br><span class="line">		<span class="keyword">int</span> bb=b;</span><br><span class="line">		<span class="keyword">int</span> cc=c;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;=<span class="number">14</span>;j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(j==<span class="number">1</span>||j==<span class="number">7</span>||j==<span class="number">4</span>||j==<span class="number">8</span>||j==<span class="number">11</span>||j==<span class="number">14</span>)&#123;</span><br><span class="line">				<span class="keyword">if</span>(aa&gt;<span class="number">0</span>)&#123;</span><br><span class="line">					aa--;</span><br><span class="line">					sum++;</span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(j==<span class="number">2</span>||j==<span class="number">6</span>||j==<span class="number">9</span>||j==<span class="number">13</span>)&#123;</span><br><span class="line">				<span class="keyword">if</span>(bb&gt;<span class="number">0</span>)&#123;</span><br><span class="line">					bb--;</span><br><span class="line">					sum++;</span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(j==<span class="number">3</span>||j==<span class="number">5</span>||j==<span class="number">10</span>||j==<span class="number">12</span>)&#123;</span><br><span class="line">				<span class="keyword">if</span>(cc&gt;<span class="number">0</span>)&#123;</span><br><span class="line">					cc--;</span><br><span class="line">					sum++;</span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		cns=max(sum,cns);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans+cns&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>在cf上发现了更简单的ac代码：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ans[<span class="number">4</span>][<span class="number">3</span>][<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">//a=0</span></span><br><span class="line">	ans[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	ans[<span class="number">0</span>][<span class="number">0</span>][<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	ans[<span class="number">0</span>][<span class="number">1</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	ans[<span class="number">0</span>][<span class="number">1</span>][<span class="number">1</span>]=<span class="number">2</span>;</span><br><span class="line">	ans[<span class="number">0</span>][<span class="number">0</span>][<span class="number">2</span>]=<span class="number">1</span>;</span><br><span class="line">	ans[<span class="number">0</span>][<span class="number">1</span>][<span class="number">2</span>]=<span class="number">2</span>;</span><br><span class="line">	ans[<span class="number">0</span>][<span class="number">2</span>][<span class="number">2</span>]=<span class="number">2</span>;</span><br><span class="line">	ans[<span class="number">0</span>][<span class="number">2</span>][<span class="number">1</span>]=<span class="number">2</span>;</span><br><span class="line">	ans[<span class="number">0</span>][<span class="number">2</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="comment">//a=1</span></span><br><span class="line">	ans[<span class="number">1</span>][<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	ans[<span class="number">1</span>][<span class="number">0</span>][<span class="number">1</span>]=<span class="number">2</span>;</span><br><span class="line">	ans[<span class="number">1</span>][<span class="number">1</span>][<span class="number">0</span>]=<span class="number">2</span>;</span><br><span class="line">	ans[<span class="number">1</span>][<span class="number">1</span>][<span class="number">1</span>]=<span class="number">3</span>;</span><br><span class="line">	ans[<span class="number">1</span>][<span class="number">0</span>][<span class="number">2</span>]=<span class="number">3</span>;</span><br><span class="line">	ans[<span class="number">1</span>][<span class="number">1</span>][<span class="number">2</span>]=<span class="number">4</span>;</span><br><span class="line">	ans[<span class="number">1</span>][<span class="number">2</span>][<span class="number">2</span>]=<span class="number">5</span>;</span><br><span class="line">	ans[<span class="number">1</span>][<span class="number">2</span>][<span class="number">1</span>]=<span class="number">3</span>;</span><br><span class="line">	ans[<span class="number">1</span>][<span class="number">2</span>][<span class="number">0</span>]=<span class="number">2</span>;</span><br><span class="line">	<span class="comment">//a=2</span></span><br><span class="line">	ans[<span class="number">2</span>][<span class="number">0</span>][<span class="number">0</span>]=<span class="number">2</span>;</span><br><span class="line">	ans[<span class="number">2</span>][<span class="number">0</span>][<span class="number">1</span>]=<span class="number">2</span>;</span><br><span class="line">	ans[<span class="number">2</span>][<span class="number">1</span>][<span class="number">0</span>]=<span class="number">3</span>;</span><br><span class="line">	ans[<span class="number">2</span>][<span class="number">1</span>][<span class="number">1</span>]=<span class="number">4</span>;</span><br><span class="line">	ans[<span class="number">2</span>][<span class="number">0</span>][<span class="number">2</span>]=<span class="number">3</span>;</span><br><span class="line">	ans[<span class="number">2</span>][<span class="number">1</span>][<span class="number">2</span>]=<span class="number">5</span>;</span><br><span class="line">	ans[<span class="number">2</span>][<span class="number">2</span>][<span class="number">2</span>]=<span class="number">6</span>;</span><br><span class="line">	ans[<span class="number">2</span>][<span class="number">2</span>][<span class="number">1</span>]=<span class="number">5</span>;</span><br><span class="line">	ans[<span class="number">2</span>][<span class="number">2</span>][<span class="number">0</span>]=<span class="number">4</span>;</span><br><span class="line">	<span class="comment">//a=3</span></span><br><span class="line">	ans[<span class="number">3</span>][<span class="number">0</span>][<span class="number">0</span>]=<span class="number">2</span>;</span><br><span class="line">	ans[<span class="number">3</span>][<span class="number">0</span>][<span class="number">1</span>]=<span class="number">2</span>;</span><br><span class="line">	ans[<span class="number">3</span>][<span class="number">1</span>][<span class="number">0</span>]=<span class="number">3</span>;</span><br><span class="line">	ans[<span class="number">3</span>][<span class="number">1</span>][<span class="number">1</span>]=<span class="number">5</span>;</span><br><span class="line">	ans[<span class="number">3</span>][<span class="number">0</span>][<span class="number">2</span>]=<span class="number">3</span>;</span><br><span class="line">	ans[<span class="number">3</span>][<span class="number">1</span>][<span class="number">2</span>]=<span class="number">6</span>;</span><br><span class="line">	ans[<span class="number">3</span>][<span class="number">2</span>][<span class="number">2</span>]=<span class="number">7</span>;</span><br><span class="line">	ans[<span class="number">3</span>][<span class="number">2</span>][<span class="number">1</span>]=<span class="number">6</span>;</span><br><span class="line">	ans[<span class="number">3</span>][<span class="number">2</span>][<span class="number">0</span>]=<span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a,b,c;</span><br><span class="line">	solve();</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;a,&amp;b,&amp;c)!=EOF)&#123;</span><br><span class="line">		<span class="keyword">int</span> T=min(a/<span class="number">3</span>,min(b/<span class="number">2</span>,c/<span class="number">2</span>));</span><br><span class="line">		<span class="keyword">if</span>(T==<span class="number">0</span>)&#123;</span><br><span class="line">			a=min(a,<span class="number">3</span>);</span><br><span class="line">			b=min(b,<span class="number">2</span>);</span><br><span class="line">			c=min(c,<span class="number">2</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			a-=T*<span class="number">3</span>;</span><br><span class="line">			b-=T*<span class="number">2</span>;</span><br><span class="line">			c-=T*<span class="number">2</span>;</span><br><span class="line">			a=min(a,<span class="number">3</span>);</span><br><span class="line">			b=min(b,<span class="number">2</span>);</span><br><span class="line">			c=min(c,<span class="number">2</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> res=<span class="number">7</span>*T+ans[a][b][c];</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,res);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#A-Restoring-Three-Numbers"><span class="toc-text">A. Restoring Three Numbers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#B-Make-Them-Equal"><span class="toc-text">B. Make Them Equal</span></a></li></ol>
+  </div>
+</aside>
+  
+    <aside class="passage-copyright">
+      <div>本文作者: 沈天任</div>
+      
+        <div>
+          原文链接: 
+          <a href target="_blank">http://shentianren.github.io/2019/05/06/Codeforces-Round-552-Div-3-解题报告/</a>
+        </div>
+      
+      <div>
+        版权声明: 本博客所有文章除特别声明外, 均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议. 转载请注明出处!
+      </div>
+    </aside>
+  
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">博客推荐</h5>
+        
+          <span class="site-footer-item">
+            <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人网站</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="http://www.chentyit.cn" target="_blank">陈天翼的个人网站</a>
+          </span>
+        
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: 834562113@qq.com
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+        
+          <div>
+            <img src="/images/wechat.png" alt="WeChat">
+            
+              <p>WeChat</p>
+            
+          </div>
+        
+          <div>
+            <img src="/images/alipay.png" alt="AliPay">
+            
+              <p>AliPay</p>
+            
+          </div>
+        
+      </div>
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="javascript:void(0);" data-enable="false">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/2019/05/03/Programming-Exercise-1-Linear-Regression/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    <a href="javascript:void(0);" id="site-reward">
+      <i class="fa fa-thumbs-up"></i>
+    </a>
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+    <a id="share-btn-twitter" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+  
+  
+    <a id="share-btn-facebook" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-facebook"></i>
+    </a>
+  
+  
+    <a id="share-btn-weibo" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-weibo"></i>
+    </a>
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+
+
+
+    
+  </body>
+</html>

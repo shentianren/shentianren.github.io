@@ -6,12 +6,12 @@
   <meta name="author" content="chancery">
   
   
-  <title>HHKB PRO BT 开箱测评 | chancery的blog</title>
+  <title>Programming Exercise 1: Linear Regression | chancery的blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="测评,">
+    <meta name="keywords" content>
   
 
   
@@ -164,12 +164,8 @@
   <div class="passage">
   <div class="passage-meta">
     <span>
-      <i class="fa fa-calendar"></i>2019-04-28
+      <i class="fa fa-calendar"></i>2019-05-03
     </span>
-    
-      <span>
-        | <a href="/categories/测评/"><i class="fa fa-bookmark"></i>测评</a>
-      </span>
     
     
       <span>
@@ -178,17 +174,22 @@
     
   </div>
   <h1 class="passage-title">
-    HHKB PRO BT 开箱测评
+    Programming Exercise 1: Linear Regression
   </h1>
   
   <article class="passage-article">
-    <p><strong>开篇：</strong></p>
-<h2 id="缘由："><a href="#缘由：" class="headerlink" title="缘由："></a>缘由：</h2><p>​    在入手BT之前，个人曾经使用过朋友的HHKB Pro2，因为在此之前就曾经意淫过拥有HHKB，经过试用更加坚定了自己的想法，毕竟这确实是一个值得拥有的键盘。</p>
-<h2 id="选购："><a href="#选购：" class="headerlink" title="选购："></a>选购：</h2><p>​    现在HHKB一共有三个版本，因为不喜欢有有线，个人设备为2018MacBook pro + Dell 2518dr，感觉usb连接不是很方便，又不想瞎折腾，自己增加蓝牙模块（动手能力极差。颜色方面，个人比较喜欢黑色，感觉和自己的MacBook很般配。</p>
-<h2 id="上图："><a href="#上图：" class="headerlink" title="上图："></a>上图：</h2><p><img src="//shentianren.github.io/2019/04/28/HHKB-PRO-BT-开箱测评/IMG_20190416_114743.jpg" alt="IMG_20190416_114743"></p>
-<p><img src="//shentianren.github.io/2019/04/28/HHKB-PRO-BT-开箱测评/IMG_20190416_114757.jpg" alt="IMG_20190416_114757"></p>
-<p><img src="//shentianren.github.io/2019/04/28/HHKB-PRO-BT-开箱测评/IMG_20190416_114916_1.jpg" alt="IMG_20190416_114916_1"></p>
-<p><img src="//shentianren.github.io/2019/04/28/HHKB-PRO-BT-开箱测评/IMG_20190416_114925.jpg" alt="IMG_20190416_114925">由于拍摄光线原因，实际颜色要比上图颜色再黑一点。当你把他拿在手里的时候，那种感觉实在是个<strong>太爽</strong>了！<del>要什么女朋友，</del>，放在手里确实很轻（终于可以拿着MBP+HHKB去咖啡馆愉快的搬砖了！。虽然键盘采用了更老的蓝牙3.0版本，但他也意味着更加成熟，稳定，在使用的时候丝毫感觉不到延迟，个人打字应该算是中上等水平。手感舒适，玄学，着真的无法用语言形容，谁用谁知道，反正我用上了它，一整天都想黏在键盘上，听着摇滚，敲着代码，人生极乐至极。</p>
+    <h1 id="Programming-Exercise-1-Linear-Regression"><a href="#Programming-Exercise-1-Linear-Regression" class="headerlink" title="Programming Exercise 1: Linear Regression"></a>Programming Exercise 1: Linear Regression</h1><p><strong>Machine Learning</strong></p>
+<p>经过了两周的学习，课程开始进入了实践和理论相结合的部分，在第二周的作业中，加入了编程实践的作业。根据作业要求的PDF对作业进行一下总结。</p>
+<p>首先作业题分为必做题和选做题，由于选做题和必做题难度相近，且并不能增加相应的成绩，在此，本菜🐔仅仅做了必做题（在PDF中必做题用*号表示，选做题用†表示）。</p>
+<h2 id="1-Simple-Octave-MATLAB-function"><a href="#1-Simple-Octave-MATLAB-function" class="headerlink" title="1  Simple Octave/MATLAB function"></a>1  Simple Octave/MATLAB function</h2><p>题意概述：第一题其实就是一个送分题，如果你认真听此前的一个课程，那么你将会非常熟练的写出来。</p>
+<p>warmUpExercise.m返回一个5*5的矩阵</p>
+<p>warmUpExercise.m</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">function A = warmUpExercise()</span><br><span class="line">%WARMUPEXERCISE Example function in octave</span><br><span class="line">%   A = WARMUPEXERCISE() is an example function that returns the 5x5 identity matrix</span><br><span class="line"></span><br><span class="line">A = [];</span><br><span class="line">% ============= YOUR CODE HERE ==============</span><br><span class="line">% Instructions: Return the 5x5 identity matrix </span><br><span class="line">%               In octave, we return values by defining which variables</span><br><span class="line">%               represent the return values (at the top of the file)</span><br><span class="line">%               and then set them accordingly. </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">A = eye(5);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">% ===========================================</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<h2 id><a href="#" class="headerlink" title></a><img src="//shentianren.github.io/2019/05/03/Programming-Exercise-1-Linear-Regression/T1.png" alt="T1"></h2><h2 id="2-Linear-regression-with-one-variable"><a href="#2-Linear-regression-with-one-variable" class="headerlink" title="2   Linear regression with one variable"></a>2   Linear regression with one variable</h2><p>题目概述：采用线性回归的办法来预测餐车的利润，在题目中有城市的人口总量和利润数据。通过线性回归来选择在哪个城市放置餐车能使餐厅的利润最大化。</p>
+<p>在开始执行任何任务之前，通过可视化来了解数据通常很有用。 对于此数据集，您可以使用散点图来显示数据，因为它只有两个要绘制的属性（利润和总体）。 （在现实生活中你会遇到的许多其他问题都是多维的，无法在二维图上绘制。）</p>
+<p><strong>画图的子程序：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">function plotData(x, y)</span><br><span class="line">%PLOTDATA Plots the data points x and y into a new figure </span><br><span class="line">%   PLOTDATA(x,y) plots the data points and gives the figure axes labels of</span><br><span class="line">%   population and profit.</span><br><span class="line"></span><br><span class="line">figure; % open a new figure window</span><br><span class="line"></span><br><span class="line">% ====================== YOUR CODE HERE ======================</span><br><span class="line">% Instructions: Plot the training data into a figure using the </span><br><span class="line">%               &quot;figure&quot; and &quot;plot&quot; commands. Set the axes labels using</span><br><span class="line">%               the &quot;xlabel&quot; and &quot;ylabel&quot; commands. Assume the </span><br><span class="line">%               population and revenue data have been passed in</span><br><span class="line">%               as the x and y arguments of this function.</span><br><span class="line">%</span><br><span class="line">% Hint: You can use the &apos;rx&apos; option with plot to have the markers</span><br><span class="line">%       appear as red crosses. Furthermore, you can make the</span><br><span class="line">%       markers larger by using plot(..., &apos;rx&apos;, &apos;MarkerSize&apos;, 10);</span><br><span class="line"></span><br><span class="line">plot(x, y, &apos;rx&apos;, &apos;MarkerSize&apos;, 10);</span><br><span class="line">xlabel(&apos;Population of City in 10,000s&apos;); </span><br><span class="line">ylabel(&apos;Profit in $10,000s&apos;); </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">% ============================================================</span><br><span class="line"></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
 
   </article>
   <aside class="table-content" id="site-toc">
@@ -197,7 +198,7 @@
     <span>目录</span>
   </div>
   <div class="table-content-main">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#缘由："><span class="toc-text">缘由：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选购："><span class="toc-text">选购：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上图："><span class="toc-text">上图：</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Programming-Exercise-1-Linear-Regression"><span class="toc-text">Programming Exercise 1: Linear Regression</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Simple-Octave-MATLAB-function"><span class="toc-text">1  Simple Octave/MATLAB function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Linear-regression-with-one-variable"><span class="toc-text">2   Linear regression with one variable</span></a></li></ol></li></ol>
   </div>
 </aside>
   
@@ -206,7 +207,7 @@
       
         <div>
           原文链接: 
-          <a href target="_blank">http://shentianren.github.io/2019/04/28/HHKB-PRO-BT-开箱测评/</a>
+          <a href target="_blank">http://shentianren.github.io/2019/05/03/Programming-Exercise-1-Linear-Regression/</a>
         </div>
       
       <div>
@@ -302,10 +303,10 @@
 
 <div class="bottom-bar">
   <div class="bottom-bar-left">
-    <a href="/2019/05/03/Programming-Exercise-1-Linear-Regression/" data-enable="true">
+    <a href="/2019/05/06/Codeforces-Round-552-Div-3-解题报告/" data-enable="true">
       <i class="fa fa-arrow-left"></i>
     </a>
-    <a href="/2019/04/17/Machine-Learning/" data-enable="true">
+    <a href="/2019/04/28/HHKB-PRO-BT-开箱测评/" data-enable="true">
       <i class="fa fa-arrow-right"></i>
     </a>
   </div>
