@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+  
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="author" content="chancery">
+  
+  
+  <title>Mac安装CRF++ | chancery的blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="机器学习,">
+  
+
+  
+  <meta name="description" content="计算机 科技 程序员 ACM">
+
+  
+
+  
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+  
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"JebpbaGgM9yrgkWa6IQJXjAu-gzGzoHsz","appkey":"ildpRFnxjX8q1B5eSf8NL4xO","comment":true,"count":true,"timer":true},
+    welcome: {"enable":false,"interval":30},
+    start_time: "2018-10-5",
+    passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
+    is_post: true,
+    lock: false,
+    author: "chancery",
+    share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/"
+  };
+</script>
+
+  <script src="/vendor/sha256.min.js"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/index.js"></script>
+<script src="/vendor/qrcode.min.js"></script>
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+  
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/styles/components/highlight/highlight.css">
+
+  
+</head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/">chancery</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | 一只小菜鸡</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/" target="_self">首页</a>
+      
+        <a href="/archives/" target="_self">归档</a>
+      
+        <a href="/tags/" target="_self">标签</a>
+      
+        <a href="/categories/" target="_self">分类</a>
+      
+        <a href="/friends/" target="_self">友链</a>
+      
+        <a href="/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/shentianren/" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-10-30
+    </span>
+    
+      <span>
+        | <a href="/categories/机器学习/"><i class="fa fa-bookmark"></i>机器学习</a>
+      </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    Mac安装CRF++
+  </h1>
+  
+  <article class="passage-article">
+    <h2 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h2><h3 id="将CRF-安装包下载到本地"><a href="#将CRF-安装包下载到本地" class="headerlink" title="将CRF++安装包下载到本地"></a>将CRF++安装包下载到本地</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/taku910/crfpp.git</span><br></pre></td></tr></table></figure>
+<h3 id="进入到安装包的目录，进行编译和安装"><a href="#进入到安装包的目录，进行编译和安装" class="headerlink" title="进入到安装包的目录，进行编译和安装"></a>进入到安装包的目录，进行编译和安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[~]$ cd crfpp/                                                                           </span><br><span class="line">[~/crfpp]$ ./configure                                                          [master] </span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<p>大概率会爆出            <strong>fatal error:</strong> <strong>‘winmain.h’ file not found</strong>的错误</p>
+<p><strong>Solution</strong>：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  CRF++ -- Yet Another CRF toolkit</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  $Id: common.h 1588 2007-02-12 09:03:39Z taku $;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Copyright(C) 2005-2007 Taku Kudo &lt;taku@chasen.org&gt;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> defined(_WIN32) || defined(__CYGWIN__)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> &#123;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CommandLine</span> &#123;</span></span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  CommandLine(<span class="keyword">int</span> argc, <span class="keyword">wchar_t</span> **argv) : argc_(argc), argv_(<span class="number">0</span>) &#123;</span><br><span class="line">    argv_ = <span class="keyword">new</span> <span class="keyword">char</span> * [argc_];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; argc_; ++i) &#123;</span><br><span class="line">      <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> arg = WideToUtf8(argv[i]);</span><br><span class="line">      argv_[i] = <span class="keyword">new</span> <span class="keyword">char</span>[arg.size() + <span class="number">1</span>];</span><br><span class="line">      ::<span class="built_in">memcpy</span>(argv_[i], arg.data(), arg.size());</span><br><span class="line">      argv_[i][arg.size()] = <span class="string">'\0'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  ~CommandLine() &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; argc_; ++i) &#123;</span><br><span class="line">      <span class="keyword">delete</span> [] argv_[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">delete</span> [] argv_;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">argc</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> argc_; &#125;</span><br><span class="line">  <span class="function"><span class="keyword">char</span> **<span class="title">argv</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> argv_; &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">private</span>:</span><br><span class="line">  <span class="keyword">static</span> <span class="built_in">std</span>::<span class="function"><span class="built_in">string</span> <span class="title">WideToUtf8</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::wstring &amp;input)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> output_length = ::WideCharToMultiByte(CP_UTF8, <span class="number">0</span>,</span><br><span class="line">                                                    input.c_str(), <span class="number">-1</span>, <span class="literal">NULL</span>, <span class="number">0</span>,</span><br><span class="line">                                                    <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">if</span> (output_length == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span> *input_encoded = <span class="keyword">new</span> <span class="keyword">char</span>[output_length + <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> result = ::WideCharToMultiByte(CP_UTF8, <span class="number">0</span>, input.c_str(), <span class="number">-1</span>,</span><br><span class="line">                                             input_encoded,</span><br><span class="line">                                             output_length + <span class="number">1</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> output;</span><br><span class="line">    <span class="keyword">if</span> (result &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      output.assign(input_encoded);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">delete</span> [] input_encoded;</span><br><span class="line">    <span class="keyword">return</span> output;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> argc_;</span><br><span class="line">  <span class="keyword">char</span> **argv_;</span><br><span class="line">&#125;;</span><br><span class="line">&#125;  <span class="comment">// namespace</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> main(argc, argv) wmain_to_main_wrapper(argc, argv)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">wmain_to_main_wrapper</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">wmain</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">wchar_t</span> **argv)</span> </span>&#123;</span><br><span class="line">  <span class="function">CommandLine <span class="title">cmd</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line">  <span class="keyword">return</span> wmain_to_main_wrapper(cmd.argc(), cmd.argv());</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<p><strong>将此源码保存为winmain.h放入crfpp文件夹内，接着重新编译安装</strong></p>
+<h3 id="进入到crpff的python目录下，进行安装"><a href="#进入到crpff的python目录下，进行安装" class="headerlink" title="进入到crpff的python目录下，进行安装"></a>进入到crpff的python目录下，进行安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[~/crfpp]$ cd python/                                                          *[master] </span><br><span class="line">[~/crfpp/python]$ python3 setup.py install                                     *[master] </span><br><span class="line">//如果是MAC自带python2.7</span><br><span class="line">直接python setup.py install</span><br></pre></td></tr></table></figure>
+
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#步骤："><span class="toc-text">步骤：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#将CRF-安装包下载到本地"><span class="toc-text">将CRF++安装包下载到本地</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进入到安装包的目录，进行编译和安装"><span class="toc-text">进入到安装包的目录，进行编译和安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进入到crpff的python目录下，进行安装"><span class="toc-text">进入到crpff的python目录下，进行安装</span></a></li></ol></li></ol>
+  </div>
+</aside>
+  
+    <aside class="passage-copyright">
+      <div>本文作者: 沈天任</div>
+      
+        <div>
+          原文链接: 
+          <a href target="_blank">http://shentianren.github.io/2019/10/30/Mac安装CRF/</a>
+        </div>
+      
+      <div>
+        版权声明: 本博客所有文章除特别声明外, 均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议. 转载请注明出处!
+      </div>
+    </aside>
+  
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">博客推荐</h5>
+        
+          <span class="site-footer-item">
+            <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人网站</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="http://www.chentyit.cn" target="_blank">陈天翼的个人网站</a>
+          </span>
+        
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: 834562113@qq.com
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+        
+          <div>
+            <img src="/images/wechat.png" alt="WeChat">
+            
+              <p>WeChat</p>
+            
+          </div>
+        
+          <div>
+            <img src="/images/alipay.png" alt="AliPay">
+            
+              <p>AliPay</p>
+            
+          </div>
+        
+      </div>
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="javascript:void(0);" data-enable="false">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/2019/10/28/《人性的弱点》读书记录/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    <a href="javascript:void(0);" id="site-reward">
+      <i class="fa fa-thumbs-up"></i>
+    </a>
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+    <a id="share-btn-twitter" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+  
+  
+    <a id="share-btn-facebook" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-facebook"></i>
+    </a>
+  
+  
+    <a id="share-btn-weibo" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-weibo"></i>
+    </a>
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+
+
+
+    
+  </body>
+</html>
