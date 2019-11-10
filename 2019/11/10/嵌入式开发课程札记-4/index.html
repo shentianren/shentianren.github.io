@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+  
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="author" content="chancery">
+  
+  
+  <title>嵌入式开发课程札记(4) | chancery的blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content>
+  
+
+  
+  <meta name="description" content="计算机 科技 程序员 ACM">
+
+  
+
+  
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+  
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"JebpbaGgM9yrgkWa6IQJXjAu-gzGzoHsz","appkey":"ildpRFnxjX8q1B5eSf8NL4xO","comment":true,"count":true,"timer":true},
+    welcome: {"enable":false,"interval":30},
+    start_time: "2018-10-5",
+    passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
+    is_post: true,
+    lock: false,
+    author: "chancery",
+    share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/"
+  };
+</script>
+
+  <script src="/vendor/sha256.min.js"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/index.js"></script>
+<script src="/vendor/qrcode.min.js"></script>
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+  
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/styles/components/highlight/highlight.css">
+
+  
+</head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/">chancery</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | 一只小菜鸡</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/" target="_self">首页</a>
+      
+        <a href="/archives/" target="_self">归档</a>
+      
+        <a href="/tags/" target="_self">标签</a>
+      
+        <a href="/categories/" target="_self">分类</a>
+      
+        <a href="/friends/" target="_self">友链</a>
+      
+        <a href="/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/shentianren/" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-11-10
+    </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    嵌入式开发课程札记(4)
+  </h1>
+  
+  <article class="passage-article">
+    <h2 id="实验一-修改定时器的值通过串口输入显示不同频率的灯"><a href="#实验一-修改定时器的值通过串口输入显示不同频率的灯" class="headerlink" title="实验一  修改定时器的值通过串口输入显示不同频率的灯"></a>实验一  修改定时器的值通过串口输入显示不同频率的灯</h2><p>在这个实验中对SysTick定时器的操作可以分为四个步骤：</p>
+<p>设置定时器的时钟源，设置定时器的初始值，清零定时器的计数器，打开定时器</p>
+<p><strong>代码如下：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//========================中断函数服务例程===============================</span></span><br><span class="line"><span class="comment">//======================================================================</span></span><br><span class="line"><span class="comment">//函数名称：SysTick_Handler</span></span><br><span class="line"><span class="comment">//参数说明：无</span></span><br><span class="line"><span class="comment">//函数返回：无</span></span><br><span class="line"><span class="comment">//功能概要：SysTick定时器中断服务例程</span></span><br><span class="line"><span class="comment">//======================================================================</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SysTick_Handler</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> uint_8 SysTickcount = <span class="number">0</span>;</span><br><span class="line">    SysTickcount++;</span><br><span class="line">    <span class="keyword">if</span>(SysTickcount &gt;= <span class="number">100</span>)   <span class="comment">//1s到</span></span><br><span class="line">    &#123;</span><br><span class="line">        SysTickcount = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//秒计时程序</span></span><br><span class="line">        SecAdd1(g_time);      <span class="comment">//g_time是时分秒全局变量数组</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//函数名称：systick_init</span></span><br><span class="line"><span class="comment">//函数返回：无</span></span><br><span class="line"><span class="comment">//参数说明：clk_src_sel：时钟源选择：1：内核时钟（CORE_CLK_KHZ）;</span></span><br><span class="line"><span class="comment">//                             0：内核时钟/16。</span></span><br><span class="line"><span class="comment">//         int_ms:中断的时间间隔。单位ms 推荐选用5,10,......,最大为50</span></span><br><span class="line"><span class="comment">//功能概要：初始化SysTick模块，设置中断的时间间隔</span></span><br><span class="line"><span class="comment">//说    明：内核时钟频率SYSTEM_CLK_KHZ宏定义在common.h中</span></span><br><span class="line"><span class="comment">//       systick以ms为单位，最大可为349（2^24/48000，向下取整），合理范围1~349。前提</span></span><br><span class="line"><span class="comment">//时钟是内核时钟，为48000000Hz。假如时钟频率升高，合理范围会缩小。</span></span><br><span class="line"><span class="comment">//KL25的SysTick时钟源可以是内核时钟，也可设置为内核时钟的16分频。</span></span><br><span class="line"><span class="comment">//24位计数器，减1计数</span></span><br><span class="line"><span class="comment">//时间范围：1ms~349ms（内核时钟）;1ms~5592ms（内核时钟的16分频）</span></span><br><span class="line"><span class="comment">//===========================================================================</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">systick_init</span><span class="params">(uint_8 clk_src_sel, uint_8 int_ms)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		SysTick-&gt;CTRL = <span class="number">0</span>;   <span class="comment">//设置前先关闭systick</span></span><br><span class="line">		SysTick-&gt;VAL  = <span class="number">0</span>;   <span class="comment">//清除计数器</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">//根据计数频率，确定并设置重载寄存器的值</span></span><br><span class="line">		<span class="keyword">if</span>(<span class="number">0</span>==clk_src_sel)              <span class="comment">//0:内核时钟/16</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>((int_ms&lt;<span class="number">1</span>)&amp;&amp;(int_ms&gt;<span class="number">5592</span>))</span><br><span class="line">			&#123;</span><br><span class="line">				int_ms = <span class="number">10</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			SysTick-&gt;LOAD = SYSTEM_CLK_KHZ*int_ms/<span class="number">16</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>                            <span class="comment">//1:内核时钟</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>((int_ms&lt;<span class="number">1</span>)&amp;&amp;(int_ms&gt;<span class="number">349</span>))</span><br><span class="line">			&#123;</span><br><span class="line">				int_ms = <span class="number">10</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			SysTick-&gt;LOAD = SYSTEM_CLK_KHZ*int_ms;</span><br><span class="line">			SysTick-&gt;CTRL = (SysTick_CTRL_CLKSOURCE_Msk);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//设定 SysTick优先级为3(SHPR3寄存器的最高字节=0xC0)</span></span><br><span class="line">		NVIC_SetPriority (SysTick_IRQn, (<span class="number">1U</span>L &lt;&lt; __NVIC_PRIO_BITS) - <span class="number">1U</span>L);</span><br><span class="line">		<span class="comment">//设置时钟源,允许中断,使能该模块,开始计数</span></span><br><span class="line">		SysTick-&gt;CTRL |= ( SysTick_CTRL_ENABLE_Msk|SysTick_CTRL_TICKINT_Msk );</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>下面在main.c文件中设置了三种频率的小灯状态通过串口输入改变闪烁状态，即10ms，20ms，5ms三种状态。</p>
+<p><strong>代码如下：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//说明见工程文件夹下的Doc文件夹内Readme.txt文件</span></span><br><span class="line"><span class="comment">//============================================================================</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"includes.h"</span>   <span class="comment">//包含总头文件</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//1. 声明主函数使用的变量</span></span><br><span class="line">    uint_32  remember;      <span class="comment">//记录上一刻的秒值</span></span><br><span class="line">    uint_8 count_1=<span class="number">0</span>,count_10=<span class="number">0</span>,count_20=<span class="number">0</span>;</span><br><span class="line">    <span class="comment">//2. 关总中断</span></span><br><span class="line">    DISABLE_INTERRUPTS;</span><br><span class="line">    <span class="comment">//3. 初始化外设模块</span></span><br><span class="line">    light_init(LIGHT_BLUE, LIGHT_ON);  <span class="comment">//蓝灯初始化</span></span><br><span class="line">    uart_init(UART_1, <span class="number">9600</span>);    <span class="comment">//使能串口1，波特率为9600</span></span><br><span class="line">    uart_init(UART_2, <span class="number">9600</span>);    <span class="comment">//使能串口2，波特率为9600</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\r\n苏州大学嵌入式实验室SysTick构件测试用例!"</span>);</span><br><span class="line">    <span class="comment">//4. 给有关变量赋初值</span></span><br><span class="line">    g_time[<span class="number">0</span>] = <span class="number">0</span>;          <span class="comment">//"时分秒"缓存初始化(00:00:00)</span></span><br><span class="line">    g_time[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    g_time[<span class="number">2</span>] = <span class="number">0</span>;</span><br><span class="line">    remember= g_time[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//5. 使能模块中断</span></span><br><span class="line">    uart_enable_re_int(UART_1);   <span class="comment">//使能串口1接收中断</span></span><br><span class="line">    uart_enable_re_int(UART_2);   <span class="comment">//使能串口2接收中断</span></span><br><span class="line">    <span class="comment">//6. 开总中断</span></span><br><span class="line">    ENABLE_INTERRUPTS;</span><br><span class="line">    <span class="comment">//进入主循环</span></span><br><span class="line">    <span class="comment">//主循环开始==================================================================</span></span><br><span class="line">    <span class="keyword">for</span>(;;)&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//1毫秒闪烁5次后切换</span></span><br><span class="line">  <span class="keyword">if</span>(ch<span class="number">-0x30</span>==<span class="number">1</span>)&#123;</span><br><span class="line">	  systick_init(CORE_CLOCK_DIV_16, <span class="number">1</span>);    <span class="comment">// 初始化SysTick周期为1ms</span></span><br><span class="line">    <span class="keyword">for</span>(;ch<span class="number">-0x30</span>==<span class="number">1</span>;)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//运行指示灯（RUN_LIGHT）闪烁---------------------------------------------</span></span><br><span class="line">        <span class="keyword">if</span> (g_time[<span class="number">2</span>] != remember)      <span class="comment">//判断秒钟是否发生变化</span></span><br><span class="line">        &#123;</span><br><span class="line">            light_change(LIGHT_BLUE);<span class="comment">//蓝色运行指示灯状态变化</span></span><br><span class="line">            count_1++;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"\r\nMCU记录的相对时间：%02d:%02d:%02d"</span>,g_time[<span class="number">0</span>],g_time[<span class="number">1</span>],g_time[<span class="number">2</span>]);</span><br><span class="line">            remember=g_time[<span class="number">2</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(count_1&gt;<span class="number">20</span>)&#123;</span><br><span class="line">        	<span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  <span class="keyword">if</span>(ch<span class="number">-0x30</span>==<span class="number">2</span>)&#123;</span><br><span class="line">	  systick_init(CORE_CLOCK_DIV_16, <span class="number">10</span>);    <span class="comment">// 初始化SysTick周期为10ms</span></span><br><span class="line">    <span class="keyword">for</span>(;ch<span class="number">-0x30</span>==<span class="number">2</span>;)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//运行指示灯（RUN_LIGHT）闪烁---------------------------------------------</span></span><br><span class="line">        <span class="keyword">if</span> (g_time[<span class="number">2</span>] != remember)      <span class="comment">//判断秒钟是否发生变化</span></span><br><span class="line">        &#123;</span><br><span class="line">            light_change(LIGHT_BLUE);  <span class="comment">//蓝色运行指示灯状态变化</span></span><br><span class="line">            count_10++;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"\r\nMCU记录的相对时间：%02d:%02d:%02d"</span>,g_time[<span class="number">0</span>],g_time[<span class="number">1</span>],g_time[<span class="number">2</span>]);</span><br><span class="line">            remember=g_time[<span class="number">2</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(count_10&gt;<span class="number">10</span>)&#123;</span><br><span class="line">         	<span class="keyword">break</span>;</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  <span class="keyword">if</span>(ch<span class="number">-0x30</span>==<span class="number">3</span>)&#123;</span><br><span class="line">	  systick_init(CORE_CLOCK_DIV_16, <span class="number">20</span>);    <span class="comment">// 初始化SysTick周期为5ms</span></span><br><span class="line">    <span class="keyword">for</span>(;ch<span class="number">-0x30</span>==<span class="number">3</span>;)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//运行指示灯（RUN_LIGHT）闪烁---------------------------------------------</span></span><br><span class="line">        <span class="keyword">if</span> (g_time[<span class="number">2</span>] != remember)      <span class="comment">//判断秒钟是否发生变化</span></span><br><span class="line">        &#123;</span><br><span class="line">            light_change(LIGHT_BLUE);  <span class="comment">//蓝色运行指示灯状态变化</span></span><br><span class="line">            count_20++;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"\r\nMCU记录的相对时间：%02d:%02d:%02d"</span>,g_time[<span class="number">0</span>],g_time[<span class="number">1</span>],g_time[<span class="number">2</span>]);</span><br><span class="line">            remember=g_time[<span class="number">2</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(count_20&gt;<span class="number">6</span>)&#123;<span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="实验二-呼吸灯"><a href="#实验二-呼吸灯" class="headerlink" title="实验二     呼吸灯"></a>实验二     呼吸灯</h2><p>关键在于使占空比不断改变</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">TPM1_IRQHandler</span><span class="params">(<span class="keyword">void</span>)</span> </span></span><br><span class="line"><span class="function">    <span class="keyword">static</span> <span class="keyword">float</span> duty</span>=<span class="number">0.0</span>;     <span class="comment">//静态变量duty（占空比）  </span></span><br><span class="line">    <span class="keyword">static</span> uint_8 Up_Down=<span class="number">1</span>;   <span class="comment">//占空比增减标志  </span></span><br><span class="line">  </span><br><span class="line">    <span class="keyword">if</span>(tpm_get_int(<span class="number">1</span>) == <span class="number">1</span>)   <span class="comment">//若有TPM1的溢出中断  </span></span><br><span class="line">    &#123;  </span><br><span class="line">        tpm_clear_int(<span class="number">1</span>);     <span class="comment">//清TPM1的溢出中断标志  </span></span><br><span class="line">        pwm_update(TPM1_CH0,duty);    <span class="comment">//PWN更新  </span></span><br><span class="line">       <span class="keyword">if</span>(Up_Down==<span class="number">1</span>)              <span class="comment">//占空比逐渐增加  </span></span><br><span class="line">        &#123;  </span><br><span class="line">            duty=duty+<span class="number">0.5</span>;  </span><br><span class="line">            <span class="keyword">if</span>(duty&gt;<span class="number">100.0</span>)          <span class="comment">//防止占空比越界  </span></span><br><span class="line">            &#123;  </span><br><span class="line">                duty=<span class="number">100.0</span>;  </span><br><span class="line">                Up_Down=<span class="number">0</span>;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">else</span>                       <span class="comment">//占空比逐渐减小  </span></span><br><span class="line">        &#123;  </span><br><span class="line">            duty=duty<span class="number">-0.5</span>;  </span><br><span class="line">            <span class="keyword">if</span>(duty&lt;<span class="number">0</span>)             <span class="comment">//防止占空比越界  </span></span><br><span class="line">            &#123;  </span><br><span class="line">                duty=<span class="number">0</span>;  </span><br><span class="line">                Up_Down = <span class="number">1</span>;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="实验三-串口输入0-100调节亮度"><a href="#实验三-串口输入0-100调节亮度" class="headerlink" title="实验三     串口输入0-100调节亮度"></a>实验三     串口输入0-100调节亮度</h2><p>通过输入0-100，来调节灯的亮暗，该实验通过组帧的方法完成。</p>
+<p><strong>实验代码：</strong> 组帧，接收数据函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FrameHead    (0x50)       <span class="comment">//帧头     ASCII码对应P</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FrameTail    (0x43)       <span class="comment">//帧尾     ASCII码对应C</span></span></span><br><span class="line"><span class="function">uint_8 <span class="title">CreateFrame</span><span class="params">(uint_8 Data,uint_8 * buffer)</span></span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">       <span class="keyword">static</span> uint_8 frameLen=<span class="number">0</span>;    <span class="comment">//帧的计数器</span></span><br><span class="line">       uint_8 frameFlag;            <span class="comment">//组帧状态</span></span><br><span class="line"></span><br><span class="line">       frameFlag=<span class="number">0</span>;            <span class="comment">//组帧状态初始化</span></span><br><span class="line">       <span class="comment">//根据静态变量frameCount组帧</span></span><br><span class="line">       <span class="keyword">switch</span>(frameLen)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">case</span> <span class="number">0</span>:    <span class="comment">//第一个数据</span></span><br><span class="line">           &#123;</span><br><span class="line">               <span class="keyword">if</span> (Data==FrameHead)    <span class="comment">//收到数据是帧头FrameHead</span></span><br><span class="line">               &#123;</span><br><span class="line">                   buffer[<span class="number">0</span>]=Data;</span><br><span class="line">                   frameLen++;</span><br><span class="line">                   frameFlag=<span class="number">0</span>;        <span class="comment">//组帧开始</span></span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">break</span>;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">case</span> <span class="number">1</span>:    <span class="comment">//第二个数据，该数据是随后接收的数据个数</span></span><br><span class="line">           &#123;</span><br><span class="line">               buffer[<span class="number">1</span>]=Data<span class="number">-0x30</span>;</span><br><span class="line">               frameLen++;</span><br><span class="line">               <span class="keyword">break</span>;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">default</span>:    <span class="comment">//其他情况</span></span><br><span class="line">           &#123;</span><br><span class="line">               <span class="comment">//第二位数据是有效数据长度,根据它接收余下的数据直到帧尾前一位</span></span><br><span class="line">               <span class="keyword">if</span>(frameLen&gt;=<span class="number">2</span> &amp;&amp; frameLen&lt;=(buffer[<span class="number">1</span>] + <span class="number">1</span>))</span><br><span class="line">               &#123;</span><br><span class="line">                   buffer[frameLen]=Data;</span><br><span class="line">                   frameLen++;</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               &#125;</span><br><span class="line"></span><br><span class="line">               <span class="comment">//若是末尾数据则执行</span></span><br><span class="line">               <span class="keyword">if</span>(frameLen&gt;=(buffer[<span class="number">1</span>]+<span class="number">2</span>))</span><br><span class="line">               &#123;</span><br><span class="line">                   <span class="keyword">if</span> (Data==FrameTail)    <span class="comment">//若是帧尾</span></span><br><span class="line">                   &#123;</span><br><span class="line">                       buffer[frameLen]=Data;     <span class="comment">//将帧尾存入缓冲区</span></span><br><span class="line">                       frameFlag=<span class="number">1</span>;    <span class="comment">//组帧成功</span></span><br><span class="line">                   &#125;</span><br><span class="line">                   frameLen=<span class="number">0</span>    ;     <span class="comment">//计数清0，准备重新组帧</span></span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;     <span class="comment">//switch_END</span></span><br><span class="line">       <span class="keyword">return</span> frameFlag;                 <span class="comment">//返回组帧状态</span></span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">float</span> <span class="title">GET_DATA</span><span class="params">(uint_8 *BUFFER)</span></span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">   	uint_8 xsd=<span class="number">0</span>;</span><br><span class="line">   	<span class="keyword">float</span> count=<span class="number">0.0</span>;</span><br><span class="line">   	uint_8 i=<span class="number">2</span>;</span><br><span class="line">   	<span class="keyword">float</span> mxm=<span class="number">0.1</span>;</span><br><span class="line">   	<span class="keyword">for</span>(;i&lt;<span class="number">2</span>+BUFFER[<span class="number">1</span>];i++)</span><br><span class="line">   	&#123;</span><br><span class="line">   		<span class="keyword">if</span>(BUFFER[i]==<span class="string">'.'</span>)</span><br><span class="line">   		&#123;</span><br><span class="line">   			xsd=<span class="number">1</span>;</span><br><span class="line">   			<span class="keyword">continue</span>;</span><br><span class="line">   		&#125;</span><br><span class="line">   		BUFFER[i]=BUFFER[i]<span class="number">-0x30</span>;</span><br><span class="line">   		<span class="keyword">if</span>(xsd==<span class="number">0</span>)</span><br><span class="line">   		&#123;</span><br><span class="line">   			count=count*<span class="number">10</span>+BUFFER[i];</span><br><span class="line">   		&#125;</span><br><span class="line">   		<span class="keyword">if</span>(xsd==<span class="number">1</span>)</span><br><span class="line">   		&#123;</span><br><span class="line">   			count=count+BUFFER[i]*mxm;</span><br><span class="line">   			mxm=mxm*<span class="number">0.1</span>;</span><br><span class="line">   		&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> count;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>在TPM1中断中更改占空比</p>
+<p><strong>实验代码：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//函数名称：TPM1_IRQHandler（TPM1中断服务例程）</span></span><br><span class="line"><span class="comment">//功能概要：20ms中断一次，本程序执行一次，静态变量duty由0.0增到100.0，</span></span><br><span class="line"><span class="comment">//         再由100.0减到0.0，然后根据duty值来改变pwm的占空比的值，</span></span><br><span class="line"><span class="comment">//         对应的PWM输出引脚可以测得相应的PWM波形</span></span><br><span class="line"><span class="comment">//=====================================================================</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">TPM1_IRQHandler</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(Flag==<span class="number">0</span>)&#123;</span><br><span class="line">  	 zkb=(<span class="keyword">float</span>)((ch<span class="number">-0x30</span>)*<span class="number">10</span>);</span><br><span class="line">  	 Flag=<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">      <span class="keyword">if</span>(Flag==<span class="number">1</span>)&#123;</span><br><span class="line">      	zkb+=(<span class="keyword">float</span>)(ch<span class="number">-0x30</span>);</span><br><span class="line">      	pwm_update(TPM1_CH0,zkb);</span><br><span class="line">      	Flag=<span class="number">0</span>;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="实验三-通过进度条调节亮度"><a href="#实验三-通过进度条调节亮度" class="headerlink" title="实验三    通过进度条调节亮度"></a>实验三    通过进度条调节亮度</h2><p>C#端口调试程序通过创建trackbar组件来实现进度条功能。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line">private void trackBar1_Scroll(object sender, EventArgs e)</span><br><span class="line">        &#123;</span><br><span class="line">            string str1 = &quot;P&quot;;</span><br><span class="line">            string str2 = &quot;C&quot;;</span><br><span class="line">            string str4;</span><br><span class="line">            int size = int.Parse(trackBar1.Value.ToString());</span><br><span class="line">            string str3 ;</span><br><span class="line">            if (size == 100)</span><br><span class="line">            &#123;</span><br><span class="line">                str4 = &quot;3&quot;;</span><br><span class="line">            &#125;else if (size &lt; 100 &amp;&amp; size &gt;= 10)</span><br><span class="line">            &#123;</span><br><span class="line">                str4 = &quot;2&quot;;</span><br><span class="line">            &#125;else</span><br><span class="line">            &#123;</span><br><span class="line">                str4 = &quot;1&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">            str3 = str1 +str4+ trackBar1.Value.ToString() + str2;</span><br><span class="line">            </span><br><span class="line">            this.TSSLState.Text = &quot;过程提示: 执行发送数据...&quot;;</span><br><span class="line"></span><br><span class="line">            bool Flag;//判断数据发送是否成功</span><br><span class="line">            int i, count = 0;//len保存发送数据的长度</span><br><span class="line">            int len;</span><br><span class="line"></span><br><span class="line">            //0表示选择是字符发送,1表示的是十进制发送,2表示十六进制发送</span><br><span class="line">            int SendType;</span><br><span class="line">            SendType = CbSCISendType.SelectedIndex;</span><br><span class="line"></span><br><span class="line">            //定义一个ArrayList类的实例对象,实现一个数组,其大小在添加元</span><br><span class="line">            //素时自动变化</span><br><span class="line">            System.Collections.ArrayList SendData = new</span><br><span class="line">                System.Collections.ArrayList();</span><br><span class="line"></span><br><span class="line">            //如果串口没有打开</span><br><span class="line">            if (!sci.IsOpen)</span><br><span class="line">            &#123;</span><br><span class="line">                //状态条进行提示</span><br><span class="line">                this.TSSLState.Text += &quot;请先打开串口!&quot;;</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            if (SendType == 0)//选择的是以字符串方式发送</span><br><span class="line">            &#123;</span><br><span class="line">                this.TSSLState.Text = &quot;以字符串方式发送数据!&quot;;</span><br><span class="line">                //将要发送的数据进行编码,并获取编码后的数据长度</span><br><span class="line">                len = System.Text.Encoding.Default.GetBytes(str3).Length;</span><br><span class="line">                //sci.SCIReceInt(SCIPort,len);//设置产生接收中断的字节数  【2014-5-5 注释，否则会导致程序无响应】</span><br><span class="line">                //动态分配len字节单元内容用来存放发送数据</span><br><span class="line">                PublicVar.g_SendByteArray = new byte[len];</span><br><span class="line">                //获取TbSCISend文本的码值</span><br><span class="line">                PublicVar.g_SendByteArray =</span><br><span class="line">                  System.Text.Encoding.Default.GetBytes(str3);</span><br><span class="line">            &#125;</span><br><span class="line">            else //选择的是以十进制或者是十六进制发送数据</span><br><span class="line">            &#123;</span><br><span class="line">                //sci.SCIReceInt(SCIPort, 1);//设置产生接收中断的字节数    【2014-5-5 注释，否则会导致程序无响应】</span><br><span class="line">                foreach (string str in str3.Split(&apos;,&apos;))</span><br><span class="line">                &#123;</span><br><span class="line">                    //排除掉连续两个逗号,说明之间没有数</span><br><span class="line">                    if (str != string.Empty)</span><br><span class="line">                    &#123;</span><br><span class="line">                        if (SendType == 1)//选择的是以十进制方式发送</span><br><span class="line">                        &#123;</span><br><span class="line">                            //将文本框中的数转化为十进制存入ArrayList类的实例对象</span><br><span class="line">                            SendData.Add(Convert.ToByte(str, 10));</span><br><span class="line">                            count++;//进行计数,统计有效的数据个数</span><br><span class="line">                        &#125;</span><br><span class="line">                        else</span><br><span class="line">                        &#123;</span><br><span class="line">                            //将文本框中的数转化为十六进制存入ArrayList类的实例对象</span><br><span class="line">                            SendData.Add(Convert.ToByte(str, 16));</span><br><span class="line">                            count++;//进行计数,统计有效的数据个数</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                //动态分配空间存放发送数据</span><br><span class="line">                PublicVar.g_SendByteArray = new byte[count];</span><br><span class="line"></span><br><span class="line">                //将已经转化后的数据放入到全局变量g_SendByteArray中</span><br><span class="line">                for (i = 0; i &lt; count; i++)</span><br><span class="line">                    PublicVar.g_SendByteArray[i] = (byte)SendData[i];</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            //发送全局变量_SendByteArray中的数据,并返回结果</span><br><span class="line">            Flag = sci.SCISendData(ref PublicVar.g_SendByteArray);</span><br><span class="line"></span><br><span class="line">            if (Flag == true)//数据发送成功</span><br><span class="line">                this.TSSLState.Text += &quot;数据发送成功!&quot;;</span><br><span class="line">            else</span><br><span class="line">                this.TSSLState.Text += &quot;数据发送失败!&quot;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        //------------------------------------------------------------------</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>其它代码均和实验二相同</p>
+<h2 id="实验现象："><a href="#实验现象：" class="headerlink" title="实验现象："></a>实验现象：</h2><p><img src="//shentianren.github.io/2019/11/10/嵌入式开发课程札记-4/pic1.png" alt="pic1"></p>
+<p><img src="//shentianren.github.io/2019/11/10/嵌入式开发课程札记-4/pic2.png" alt="pic2"></p>
+<p><img src="//shentianren.github.io/2019/11/10/嵌入式开发课程札记-4/pic3.png" alt="pic3"></p>
+<p><img src="//shentianren.github.io/2019/11/10/嵌入式开发课程札记-4/pic4.png" alt="pic4"></p>
+
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#实验一-修改定时器的值通过串口输入显示不同频率的灯"><span class="toc-text">实验一  修改定时器的值通过串口输入显示不同频率的灯</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验二-呼吸灯"><span class="toc-text">实验二     呼吸灯</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验三-串口输入0-100调节亮度"><span class="toc-text">实验三     串口输入0-100调节亮度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验三-通过进度条调节亮度"><span class="toc-text">实验三    通过进度条调节亮度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验现象："><span class="toc-text">实验现象：</span></a></li></ol>
+  </div>
+</aside>
+  
+    <aside class="passage-copyright">
+      <div>本文作者: 沈天任</div>
+      
+        <div>
+          原文链接: 
+          <a href target="_blank">http://shentianren.github.io/2019/11/10/嵌入式开发课程札记-4/</a>
+        </div>
+      
+      <div>
+        版权声明: 本博客所有文章除特别声明外, 均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议. 转载请注明出处!
+      </div>
+    </aside>
+  
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">博客推荐</h5>
+        
+          <span class="site-footer-item">
+            <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人网站</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="http://www.chentyit.cn" target="_blank">陈天翼的个人网站</a>
+          </span>
+        
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: 834562113@qq.com
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+        
+          <div>
+            <img src="/images/wechat.png" alt="WeChat">
+            
+              <p>WeChat</p>
+            
+          </div>
+        
+          <div>
+            <img src="/images/alipay.png" alt="AliPay">
+            
+              <p>AliPay</p>
+            
+          </div>
+        
+      </div>
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="javascript:void(0);" data-enable="false">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/2019/10/30/Mac安装CRF/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    <a href="javascript:void(0);" id="site-reward">
+      <i class="fa fa-thumbs-up"></i>
+    </a>
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+    <a id="share-btn-twitter" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+  
+  
+    <a id="share-btn-facebook" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-facebook"></i>
+    </a>
+  
+  
+    <a id="share-btn-weibo" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-weibo"></i>
+    </a>
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+
+
+
+    
+  </body>
+</html>
