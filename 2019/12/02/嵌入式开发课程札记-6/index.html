@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+  
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="author" content="chancery">
+  
+  
+  <title>嵌入式开发课程札记(6) | chancery的blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="嵌入式,">
+  
+
+  
+  <meta name="description" content="计算机 科技 程序员 ACM">
+
+  
+
+  
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+  
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"JebpbaGgM9yrgkWa6IQJXjAu-gzGzoHsz","appkey":"ildpRFnxjX8q1B5eSf8NL4xO","comment":true,"count":true,"timer":true},
+    welcome: {"enable":false,"interval":30},
+    start_time: "2018-10-5",
+    passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
+    is_post: true,
+    lock: false,
+    author: "chancery",
+    share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/"
+  };
+</script>
+
+  <script src="/vendor/sha256.min.js"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/index.js"></script>
+<script src="/vendor/qrcode.min.js"></script>
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+  
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/styles/components/highlight/highlight.css">
+
+  
+</head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/">chancery</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | 一只小菜鸡</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/" target="_self">首页</a>
+      
+        <a href="/archives/" target="_self">归档</a>
+      
+        <a href="/tags/" target="_self">标签</a>
+      
+        <a href="/categories/" target="_self">分类</a>
+      
+        <a href="/friends/" target="_self">友链</a>
+      
+        <a href="/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/shentianren/" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-12-02
+    </span>
+    
+      <span>
+        | <a href="/categories/嵌入式/"><i class="fa fa-bookmark"></i>嵌入式</a>
+      </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    嵌入式开发课程札记(6)
+  </h1>
+  
+  <article class="passage-article">
+    <h2 id="实验一-通过串口调试助手查找存储在flash中的字符串"><a href="#实验一-通过串口调试助手查找存储在flash中的字符串" class="headerlink" title="实验一 通过串口调试助手查找存储在flash中的字符串"></a>实验一 通过串口调试助手查找存储在flash中的字符串</h2><p><strong>实验步骤</strong>：</p>
+<p>定义帧格式</p>
+<p>P+数据长+DW+空格+扇区号+空格+偏移地址+空格+字符串大小+空格+C （写入函数的组帧格式）</p>
+<p>P+数据长+DE+空格+扇区号+空格+C（擦除功能的组帧格式）</p>
+<p>P+数据长+DF+空格+开始扇区+空格+结束扇区+空格+查找数据+空格+C（查找功能的组帧格式）</p>
+<p><strong>分别读取三种数据格式的函数</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    count1 = <span class="number">0</span>, count2 = <span class="number">0</span>, count3 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">5</span>; i &lt; (g_uart_recvBuf[<span class="number">1</span>] + <span class="number">3</span> - <span class="number">27</span>); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (g_uart_recvBuf[i] == <span class="string">' '</span>) <span class="keyword">break</span>;</span><br><span class="line">        count1 = count1 * <span class="number">10</span> + g_uart_recvBuf[i] - <span class="number">48</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    i++;</span><br><span class="line">    <span class="keyword">for</span> (; i &lt; (g_uart_recvBuf[<span class="number">1</span>] + <span class="number">3</span> - <span class="number">27</span>); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (g_uart_recvBuf[i] == <span class="string">' '</span>) <span class="keyword">break</span>;</span><br><span class="line">        count2 = count2 * <span class="number">10</span> + g_uart_recvBuf[i] - <span class="number">48</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    i++;</span><br><span class="line">    <span class="keyword">for</span> (; i &lt; (g_uart_recvBuf[<span class="number">1</span>] + <span class="number">3</span> - <span class="number">27</span>); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (g_uart_recvBuf[i] == <span class="string">' '</span>) <span class="keyword">break</span>;</span><br><span class="line">        count3 = count3 * <span class="number">10</span> + g_uart_recvBuf[i] - <span class="number">48</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    i++;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Find</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    count1 = <span class="number">0</span>, count2 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">5</span>; i &lt; (g_uart_recvBuf[<span class="number">1</span>] - <span class="number">27</span>); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (g_uart_recvBuf[i] == <span class="string">' '</span>) <span class="keyword">break</span>;</span><br><span class="line">        count1 = count1 * <span class="number">10</span> + g_uart_recvBuf[i] - <span class="number">48</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    i++;</span><br><span class="line">    <span class="keyword">for</span> (; i &lt; (g_uart_recvBuf[<span class="number">1</span>] - <span class="number">27</span>); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (g_uart_recvBuf[i] == <span class="string">' '</span>) <span class="keyword">break</span>;</span><br><span class="line">        count2 = count2 * <span class="number">10</span> + g_uart_recvBuf[i] - <span class="number">48</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    i++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Erasure</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    count1 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">5</span>; i &lt; (g_uart_recvBuf[<span class="number">1</span>] + <span class="number">3</span> - <span class="number">27</span>); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (g_uart_recvBuf[i] == <span class="string">' '</span>) <span class="keyword">break</span>;</span><br><span class="line">        count1 = count1 * <span class="number">10</span> + g_uart_recvBuf[i] - <span class="number">48</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    i++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>查找函数</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(uint_16 start, uint_16 end, uint_8 *str, <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">    uint_16 ix = start;</span><br><span class="line">    uint_8 strx[<span class="number">1024</span>];</span><br><span class="line">    uint_16 n = <span class="number">0</span>, m = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (; ix &lt; end; ix++) &#123;</span><br><span class="line">        flash_read_logic(&amp;strx[<span class="number">0</span>], ix, <span class="number">0</span>, <span class="number">1024</span>);</span><br><span class="line"></span><br><span class="line">        uint_16 j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (; j &lt; <span class="number">1024</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (strx[j] == str[<span class="number">0</span>]) &#123;</span><br><span class="line">                n = <span class="number">1</span>;</span><br><span class="line">                m = j + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">for</span> (; n &lt; len &amp;&amp; m &lt; <span class="number">1024</span>; n++, m++) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (strx[m] != str[n]) <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">if</span> (n == len - <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>组帧函数</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FrameHead    (0x50)         <span class="comment">//帧头</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FrameTail    (0x43)         <span class="comment">//帧尾</span></span></span><br><span class="line"><span class="keyword">uint8_t</span> CreateFrame(<span class="keyword">uint8_t</span> Data, <span class="keyword">uint8_t</span> *buffer) &#123;</span><br><span class="line">    <span class="comment">//uart_send1(UART_2,Data);</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">uint8_t</span> frameLen = <span class="number">0</span>;    <span class="comment">//组帧计数器</span></span><br><span class="line">    <span class="keyword">uint8_t</span> frameFlag;           <span class="comment">//组帧状态</span></span><br><span class="line">    frameFlag = <span class="number">0</span>;            <span class="comment">//组帧状态 初始化</span></span><br><span class="line">    <span class="comment">//根据静态变量frameCount组帧</span></span><br><span class="line">    <span class="keyword">switch</span> (frameLen) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0</span>:    <span class="comment">//第一个数据</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (Data == FrameHead)    <span class="comment">//收到数据是帧头FrameHead</span></span><br><span class="line">            &#123;</span><br><span class="line">                buffer[<span class="number">0</span>] = Data;</span><br><span class="line">                frameLen++;</span><br><span class="line">                frameFlag = <span class="number">0</span>;        <span class="comment">//组帧开始</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:    <span class="comment">//第二个数据，该数据是随后接收的数据个数</span></span><br><span class="line">        &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            buffer[<span class="number">1</span>] = Data;</span><br><span class="line">            frameLen++;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">default</span>:    <span class="comment">//其他情况</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//第二位数据是有效数据长度,根据它接收余下的数据直到帧尾前一位</span></span><br><span class="line">            <span class="keyword">if</span> (frameLen &gt;= <span class="number">2</span> &amp;&amp; frameLen &lt;= (buffer[<span class="number">1</span>] + <span class="number">1</span> - <span class="number">27</span>)) &#123;</span><br><span class="line">                buffer[frameLen] = Data;</span><br><span class="line">                frameLen++;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//若是末尾数据则执行</span></span><br><span class="line">            <span class="keyword">if</span> (frameLen &gt;= (buffer[<span class="number">1</span>] + <span class="number">2</span> - <span class="number">27</span>)) &#123;</span><br><span class="line">                <span class="keyword">if</span> (Data == FrameTail)    <span class="comment">//若是帧尾</span></span><br><span class="line">                &#123;</span><br><span class="line">                    buffer[frameLen] = Data;     <span class="comment">//将帧尾存入缓冲区</span></span><br><span class="line">                    frameFlag = <span class="number">1</span>;    <span class="comment">//组帧成功</span></span><br><span class="line">                &#125;</span><br><span class="line">                frameLen = <span class="number">0</span>;     <span class="comment">//计数清0，准备重新组帧</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;     <span class="comment">//switch_END</span></span><br><span class="line">    <span class="keyword">return</span> frameFlag;                 <span class="comment">//返回组帧状态</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="数据长度需要自己计算-通过ASCII值-自定义数字-数据长度"><a href="#数据长度需要自己计算-通过ASCII值-自定义数字-数据长度" class="headerlink" title="数据长度需要自己计算 通过ASCII值-自定义数字=数据长度"></a>数据长度需要自己计算 通过ASCII值-自定义数字=数据长度</h3><p><strong>实验现象</strong></p>
+<p><img src="//shentianren.github.io/2019/12/02/嵌入式开发课程札记-6/1.JPG" alt="1"></p>
+<h2 id="实验二-用C-程序发送数值改变小灯的亮暗"><a href="#实验二-用C-程序发送数值改变小灯的亮暗" class="headerlink" title="实验二  用C#程序发送数值改变小灯的亮暗"></a>实验二  用C#程序发送数值改变小灯的亮暗</h2><p><strong>C#程序使用了Trackbar控件，整体函数和嵌入式开发课程札记(4)调节亮度值函数思路相同</strong></p>
+<p><strong>isr函数</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//=====================================================================</span></span><br><span class="line"><span class="comment">//函数名称：UART1_IRQHandler（串口1接收中断服务例程）</span></span><br><span class="line"><span class="comment">//功能概要：串口1接收一个数据，并将其打出</span></span><br><span class="line"><span class="comment">//=====================================================================</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">UART1_IRQHandler</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    uint_8 ch;</span><br><span class="line">    uint_8 flag = <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    DISABLE_INTERRUPTS;</span><br><span class="line">    </span><br><span class="line">    ch = uart_re1(UART_1, &amp;flag);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="number">0</span> == flag)</span><br><span class="line">    &#123;</span><br><span class="line">        uart_send1(UART_1, ch);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">    ENABLE_INTERRUPTS;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FrameHead    (0x50)       <span class="comment">//帧头     ASCII码对应P</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FrameTail    (0x43)       <span class="comment">//帧尾     ASCII码对应C</span></span></span><br><span class="line"><span class="function">uint_8 <span class="title">CreateFrame</span><span class="params">(uint_8 Data,uint_8 * buffer)</span></span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">       <span class="keyword">static</span> uint_8 frameLen=<span class="number">0</span>;    <span class="comment">//帧的计数器</span></span><br><span class="line">       uint_8 frameFlag;            <span class="comment">//组帧状态</span></span><br><span class="line"></span><br><span class="line">       frameFlag=<span class="number">0</span>;            <span class="comment">//组帧状态初始化</span></span><br><span class="line">       <span class="comment">//根据静态变量frameCount组帧</span></span><br><span class="line">       <span class="keyword">switch</span>(frameLen)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">case</span> <span class="number">0</span>:    <span class="comment">//第一个数据</span></span><br><span class="line">           &#123;</span><br><span class="line">               <span class="keyword">if</span> (Data==FrameHead)    <span class="comment">//收到数据是帧头FrameHead</span></span><br><span class="line">               &#123;</span><br><span class="line">                   buffer[<span class="number">0</span>]=Data;</span><br><span class="line">                   frameLen++;</span><br><span class="line">                   frameFlag=<span class="number">0</span>;        <span class="comment">//组帧开始</span></span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">break</span>;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">case</span> <span class="number">1</span>:    <span class="comment">//第二个数据，该数据是随后接收的数据个数</span></span><br><span class="line">           &#123;</span><br><span class="line">               buffer[<span class="number">1</span>]=Data<span class="number">-0x30</span>;</span><br><span class="line">               frameLen++;</span><br><span class="line">               <span class="keyword">break</span>;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">default</span>:    <span class="comment">//其他情况</span></span><br><span class="line">           &#123;</span><br><span class="line">               <span class="comment">//第二位数据是有效数据长度,根据它接收余下的数据直到帧尾前一位</span></span><br><span class="line">               <span class="keyword">if</span>(frameLen&gt;=<span class="number">2</span> &amp;&amp; frameLen&lt;=(buffer[<span class="number">1</span>] + <span class="number">1</span>))</span><br><span class="line">               &#123;</span><br><span class="line">                   buffer[frameLen]=Data;</span><br><span class="line">                   frameLen++;</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               &#125;</span><br><span class="line"></span><br><span class="line">               <span class="comment">//若是末尾数据则执行</span></span><br><span class="line">               <span class="keyword">if</span>(frameLen&gt;=(buffer[<span class="number">1</span>]+<span class="number">2</span>))</span><br><span class="line">               &#123;</span><br><span class="line">                   <span class="keyword">if</span> (Data==FrameTail)    <span class="comment">//若是帧尾</span></span><br><span class="line">                   &#123;</span><br><span class="line">                       buffer[frameLen]=Data;     <span class="comment">//将帧尾存入缓冲区</span></span><br><span class="line">                       frameFlag=<span class="number">1</span>;    <span class="comment">//组帧成功</span></span><br><span class="line">                   &#125;</span><br><span class="line">                   frameLen=<span class="number">0</span>    ;     <span class="comment">//计数清0，准备重新组帧</span></span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;     <span class="comment">//switch_END</span></span><br><span class="line">       <span class="keyword">return</span> frameFlag;                 <span class="comment">//返回组帧状态</span></span><br><span class="line">   &#125;</span><br><span class="line"> <span class="function">uint_16 <span class="title">GET_DATA</span><span class="params">(uint_8 *BUFFER)</span></span></span><br><span class="line"><span class="function">   </span>&#123; uint_16 count = <span class="number">0</span>;</span><br><span class="line">   	   count = BUFFER[<span class="number">2</span>]*<span class="number">1000</span>+BUFFER[<span class="number">3</span>]*<span class="number">100</span>+BUFFER[<span class="number">4</span>]*<span class="number">10</span>+BUFFER[<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> count;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//=====================================================================</span></span><br><span class="line"><span class="comment">//函数名称：UART2_IRQHandler（串口2接收中断服务例程）</span></span><br><span class="line"><span class="comment">//功能概要：串口2接收一个数据，并将其打出</span></span><br><span class="line"><span class="comment">//=====================================================================</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">UART2_IRQHandler</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">    uint_8 flag;</span><br><span class="line"></span><br><span class="line">    DISABLE_INTERRUPTS;</span><br><span class="line">    </span><br><span class="line">    DATA= uart_re1(UART_2, &amp;flag);</span><br><span class="line">    <span class="keyword">if</span> ( flag)&#123;</span><br><span class="line">    	uart_send1(UART_2,DATA) ;</span><br><span class="line"><span class="keyword">if</span>(CreateFrame(DATA,Buffer)==<span class="number">1</span>)&#123;</span><br><span class="line">   VReference=GET_DATA(Buffer);</span><br><span class="line">   dac_convert(VReference);</span><br><span class="line">&#125;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    ENABLE_INTERRUPTS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>实验视频单独存放！！！！</strong></p>
+<video src="嵌入式开发课程札记-6/2.MP4"></video>
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#实验一-通过串口调试助手查找存储在flash中的字符串"><span class="toc-text">实验一 通过串口调试助手查找存储在flash中的字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据长度需要自己计算-通过ASCII值-自定义数字-数据长度"><span class="toc-text">数据长度需要自己计算 通过ASCII值-自定义数字=数据长度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验二-用C-程序发送数值改变小灯的亮暗"><span class="toc-text">实验二  用C#程序发送数值改变小灯的亮暗</span></a></li></ol>
+  </div>
+</aside>
+  
+    <aside class="passage-copyright">
+      <div>本文作者: 沈天任</div>
+      
+        <div>
+          原文链接: 
+          <a href target="_blank">http://shentianren.github.io/2019/12/02/嵌入式开发课程札记-6/</a>
+        </div>
+      
+      <div>
+        版权声明: 本博客所有文章除特别声明外, 均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议. 转载请注明出处!
+      </div>
+    </aside>
+  
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">博客推荐</h5>
+        
+          <span class="site-footer-item">
+            <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人网站</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="http://www.chentyit.cn" target="_blank">陈天翼的个人网站</a>
+          </span>
+        
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: 834562113@qq.com
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+        
+          <div>
+            <img src="/images/wechat.png" alt="WeChat">
+            
+              <p>WeChat</p>
+            
+          </div>
+        
+          <div>
+            <img src="/images/alipay.png" alt="AliPay">
+            
+              <p>AliPay</p>
+            
+          </div>
+        
+      </div>
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="javascript:void(0);" data-enable="false">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/2019/11/19/嵌入式开发课程札记-5/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    <a href="javascript:void(0);" id="site-reward">
+      <i class="fa fa-thumbs-up"></i>
+    </a>
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+    <a id="share-btn-twitter" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+  
+  
+    <a id="share-btn-facebook" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-facebook"></i>
+    </a>
+  
+  
+    <a id="share-btn-weibo" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-weibo"></i>
+    </a>
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+
+
+
+    
+  </body>
+</html>
