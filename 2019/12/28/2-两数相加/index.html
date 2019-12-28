@@ -6,12 +6,12 @@
   <meta name="author" content="chancery">
   
   
-  <title>分类: 机器学习 | chancery的blog</title>
+  <title>2.两数相加 | chancery的blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content>
+    <meta name="keywords" content="Leetcode,">
   
 
   
@@ -42,7 +42,7 @@
     welcome: {"enable":false,"interval":30},
     start_time: "2018-10-5",
     passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
-    is_post: false,
+    is_post: true,
     lock: false,
     author: "chancery",
     share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
@@ -160,25 +160,80 @@
 </nav>
 <div id="site-process"></div>
     <main>
-      <div class="timeline">
-  <h2 class="timeline-title">系列: 机器学习</h2>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-12-28
+    </span>
+    
+      <span>
+        | <a href="/categories/Leetcode/"><i class="fa fa-bookmark"></i>Leetcode</a>
+      </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    2.两数相加
+  </h1>
   
+  <article class="passage-article">
+    <p>给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。</p>
+<p>如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。</p>
+<p>您可以假设除了数字 0 之外，这两个数都不会以 0 开头。</p>
+<p>示例：</p>
+<p>输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>输出：7 -&gt; 0 -&gt; 8<br>原因：342 + 465 = 807</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/add-two-numbers" target="_blank" rel="noopener">https://leetcode-cn.com/problems/add-two-numbers</a></p>
+<p><strong>思路</strong>：</p>
+<p>初始化一个链表root用于存储最后的结果，再定义一个LIstNode的指针变量用来指向root链表</p>
+<p>使用carry来存储每一位的进位情况。</p>
+<p><strong>题解</strong>：</p>
+<p>执行用时 :28 ms, 在所有 cpp 提交中击败了77.00%的用户</p>
+<p>内存消耗 :10.5 MB, 在所有 cpp 提交中击败了75.22%的用户</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode *root = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        ListNode *cursor ;</span><br><span class="line">        cursor = root;</span><br><span class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(l1 !=<span class="literal">NULL</span>||l2!=<span class="literal">NULL</span>||carry!=<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> sum1,sum2,sum;</span><br><span class="line">            <span class="keyword">if</span>(l1!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">                sum1 = l1-&gt;val;</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                sum1 = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(l2!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">                sum2 = l2-&gt;val;</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                sum2 = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            sum = sum1+sum2+carry;</span><br><span class="line">            carry = sum/<span class="number">10</span>;</span><br><span class="line">            ListNode *sumnode = <span class="keyword">new</span> ListNode(sum%<span class="number">10</span>);</span><br><span class="line">            cursor-&gt;next = sumnode;</span><br><span class="line">            cursor = sumnode;</span><br><span class="line">            </span><br><span class="line">        &#125;                                                                                                                       <span class="keyword">return</span> root-&gt;next;                      </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
     
-      <h3 class="timeline-subtitle">2019</h3>
-    
-    <div class="timeline-item">
-      <time>2019-10-30</time>
-      <a target="_self" href="/2019/10/30/Mac安装CRF/">Mac安装CRF++</a>
-    </div>
+  </div>
+</aside>
   
-    
-    <div class="timeline-item">
-      <time>2019-04-17</time>
-      <a target="_self" href="/2019/04/17/Machine-Learning/">Machine Learning</a>
-    </div>
+    <aside class="passage-copyright">
+      <div>本文作者: 沈天任</div>
+      
+        <div>
+          原文链接: 
+          <a href target="_blank">http://shentianren.github.io/2019/12/28/2-两数相加/</a>
+        </div>
+      
+      <div>
+        版权声明: 本博客所有文章除特别声明外, 均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议. 转载请注明出处!
+      </div>
+    </aside>
+  
   
 </div>
+
     </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
     
     <div class="site-footer-wrapper">
   <footer class="site-footer">
@@ -260,16 +315,16 @@
     <a href="javascript:void(0);" data-enable="false">
       <i class="fa fa-arrow-left"></i>
     </a>
-    <a href="javascript:void(0);" data-enable="false">
+    <a href="/2019/12/02/嵌入式开发课程札记-6/" data-enable="true">
       <i class="fa fa-arrow-right"></i>
     </a>
   </div>
   <div class="bottom-bar-right">
-    <a href="javascript:void(0);" data-enable="false" id="site-toc-show-btn">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
       <i class="fa fa-bars"></i>
     </a>
     
-      <a href="javascript:void(0);" data-enable="false">
+      <a href="#site-comment" data-enable="true">
         <i class="fa fa-commenting"></i>
       </a>
     
