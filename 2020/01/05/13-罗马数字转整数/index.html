@@ -6,12 +6,12 @@
   <meta name="author" content="chancery">
   
   
-  <title>归档: 2019/12 | chancery的blog</title>
+  <title>13. 罗马数字转整数 | chancery的blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content>
+    <meta name="keywords" content="Leetcode,">
   
 
   
@@ -42,7 +42,7 @@
     welcome: {"enable":false,"interval":30},
     start_time: "2018-10-5",
     passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
-    is_post: false,
+    is_post: true,
     lock: false,
     author: "chancery",
     share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
@@ -160,25 +160,86 @@
 </nav>
 <div id="site-process"></div>
     <main>
-      <div class="timeline">
-  <h2 class="timeline-title">归档: 15篇</h2>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2020-01-05
+    </span>
+    
+      <span>
+        | <a href="/categories/Leetcode/"><i class="fa fa-bookmark"></i>Leetcode</a>
+      </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    13. 罗马数字转整数
+  </h1>
   
+  <article class="passage-article">
+    <p>罗马数字包含以下七种字符: I， V， X， L，C，D 和 M。</p>
+<p>字符          数值<br>I             1<br>V             5<br>X             10<br>L             50<br>C             100<br>D             500<br>M             1000<br>例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做  XXVII, 即为 XX + V + II 。</p>
+<p>通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 IX。这个特殊的规则只适用于以下六种情况：</p>
+<p>I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。<br>X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。<br>C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。<br>给定一个罗马数字，将其转换成整数。输入确保在 1 到 3999 的范围内。</p>
+<p>示例 1:</p>
+<p>输入: “III”<br>输出: 3<br>示例 2:</p>
+<p>输入: “IV”<br>输出: 4<br>示例 3:</p>
+<p>输入: “IX”<br>输出: 9<br>示例 4:</p>
+<p>输入: “LVIII”<br>输出: 58<br>解释: L = 50, V= 5, III = 3.<br>示例 5:</p>
+<p>输入: “MCMXCIV”<br>输出: 1994<br>解释: M = 1000, CM = 900, XC = 90, IV = 4.</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/roman-to-integer" target="_blank" rel="noopener">https://leetcode-cn.com/problems/roman-to-integer</a></p>
+<p><strong>思路</strong></p>
+<p>将所有的罗马数字与阿拉伯数字一一对应，在题目中我们不难发现。当左边的数字小于右边的时候，我们需要减去左边的数字，相反我们则要加上左边的数字。</p>
+<p><strong>题解</strong></p>
+<p>执行结果：通过</p>
+<p>显示详情</p>
+<p>执行用时 :40 ms, 在所有 C++ 提交中击败了23.11%的用户</p>
+<p>内存消耗 :10.3 MB, 在所有 C++ 提交中击败了82.93%的用户</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">romanToInt</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">char</span>,<span class="keyword">int</span>&gt;m &#123;&#123;<span class="string">'I'</span>,<span class="number">1</span>&#125;,&#123;<span class="string">'V'</span>,<span class="number">5</span>&#125;,&#123;<span class="string">'X'</span>,<span class="number">10</span>&#125;,&#123;<span class="string">'L'</span>,<span class="number">50</span>&#125;,&#123;<span class="string">'C'</span>,<span class="number">100</span>&#125;,&#123;<span class="string">'D'</span>,<span class="number">500</span>&#125;,&#123;<span class="string">'M'</span>,<span class="number">1000</span>&#125;&#125;;<span class="comment">//hashmap</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt; s.size();i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> val = m[s[i]];</span><br><span class="line">            <span class="keyword">if</span>(i==s.size()<span class="number">-1</span>||m[s[i+<span class="number">1</span>]]&lt;=m[s[i]])&#123;</span><br><span class="line">                res+=val;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                res-=val;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
     
-      <h3 class="timeline-subtitle">2019</h3>
-    
-    <div class="timeline-item">
-      <time>2019-12-28</time>
-      <a target="_self" href="/2019/12/28/2-两数相加/">2.两数相加</a>
-    </div>
+  </div>
+</aside>
   
-    
-    <div class="timeline-item">
-      <time>2019-12-02</time>
-      <a target="_self" href="/2019/12/02/嵌入式开发课程札记-6/">嵌入式开发课程札记(6)</a>
-    </div>
+    <aside class="passage-copyright">
+      <div>本文作者: 沈天任</div>
+      
+        <div>
+          原文链接: 
+          <a href target="_blank">http://shentianren.github.io/2020/01/05/13-罗马数字转整数/</a>
+        </div>
+      
+      <div>
+        版权声明: 本博客所有文章除特别声明外, 均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议. 转载请注明出处!
+      </div>
+    </aside>
+  
   
 </div>
+
     </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
     
     <div class="site-footer-wrapper">
   <footer class="site-footer">
@@ -260,16 +321,16 @@
     <a href="javascript:void(0);" data-enable="false">
       <i class="fa fa-arrow-left"></i>
     </a>
-    <a href="javascript:void(0);" data-enable="false">
+    <a href="/2019/12/28/2-两数相加/" data-enable="true">
       <i class="fa fa-arrow-right"></i>
     </a>
   </div>
   <div class="bottom-bar-right">
-    <a href="javascript:void(0);" data-enable="false" id="site-toc-show-btn">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
       <i class="fa fa-bars"></i>
     </a>
     
-      <a href="javascript:void(0);" data-enable="false">
+      <a href="#site-comment" data-enable="true">
         <i class="fa fa-commenting"></i>
       </a>
     
