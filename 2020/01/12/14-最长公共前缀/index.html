@@ -6,12 +6,12 @@
   <meta name="author" content="chancery">
   
   
-  <title>Programming Exercise 1: Linear Regression | chanuncery的blog</title>
+  <title>14. 最长公共前缀 | chanuncery的blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content>
+    <meta name="keywords" content="Leetcode,">
   
 
   
@@ -164,8 +164,12 @@
   <div class="passage">
   <div class="passage-meta">
     <span>
-      <i class="fa fa-calendar"></i>2019-05-03
+      <i class="fa fa-calendar"></i>2020-01-12
     </span>
+    
+      <span>
+        | <a href="/categories/Leetcode/"><i class="fa fa-bookmark"></i>Leetcode</a>
+      </span>
     
     
       <span>
@@ -174,22 +178,19 @@
     
   </div>
   <h1 class="passage-title">
-    Programming Exercise 1: Linear Regression
+    14. 最长公共前缀
   </h1>
   
   <article class="passage-article">
-    <h1 id="Programming-Exercise-1-Linear-Regression"><a href="#Programming-Exercise-1-Linear-Regression" class="headerlink" title="Programming Exercise 1: Linear Regression"></a>Programming Exercise 1: Linear Regression</h1><p><strong>Machine Learning</strong></p>
-<p>经过了两周的学习，课程开始进入了实践和理论相结合的部分，在第二周的作业中，加入了编程实践的作业。根据作业要求的PDF对作业进行一下总结。</p>
-<p>首先作业题分为必做题和选做题，由于选做题和必做题难度相近，且并不能增加相应的成绩，在此，本菜🐔仅仅做了必做题（在PDF中必做题用*号表示，选做题用†表示）。</p>
-<h2 id="1-Simple-Octave-MATLAB-function"><a href="#1-Simple-Octave-MATLAB-function" class="headerlink" title="1  Simple Octave/MATLAB function"></a>1  Simple Octave/MATLAB function</h2><p>题意概述：第一题其实就是一个送分题，如果你认真听此前的一个课程，那么你将会非常熟练的写出来。</p>
-<p>warmUpExercise.m返回一个5*5的矩阵</p>
-<p>warmUpExercise.m</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">function A = warmUpExercise()</span><br><span class="line">%WARMUPEXERCISE Example function in octave</span><br><span class="line">%   A = WARMUPEXERCISE() is an example function that returns the 5x5 identity matrix</span><br><span class="line"></span><br><span class="line">A = [];</span><br><span class="line">% ============= YOUR CODE HERE ==============</span><br><span class="line">% Instructions: Return the 5x5 identity matrix </span><br><span class="line">%               In octave, we return values by defining which variables</span><br><span class="line">%               represent the return values (at the top of the file)</span><br><span class="line">%               and then set them accordingly. </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">A = eye(5);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">% ===========================================</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<h2 id><a href="#" class="headerlink" title></a><img src="//shentianren.github.io/2019/05/03/Programming-Exercise-1-Linear-Regression/T1.png" alt="T1"></h2><h2 id="2-Linear-regression-with-one-variable"><a href="#2-Linear-regression-with-one-variable" class="headerlink" title="2   Linear regression with one variable"></a>2   Linear regression with one variable</h2><p>题目概述：采用线性回归的办法来预测餐车的利润，在题目中有城市的人口总量和利润数据。通过线性回归来选择在哪个城市放置餐车能使餐厅的利润最大化。</p>
-<p>在开始执行任何任务之前，通过可视化来了解数据通常很有用。 对于此数据集，您可以使用散点图来显示数据，因为它只有两个要绘制的属性（利润和总体）。 （在现实生活中你会遇到的许多其他问题都是多维的，无法在二维图上绘制。）</p>
-<p><strong>画图的子程序：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">function plotData(x, y)</span><br><span class="line">%PLOTDATA Plots the data points x and y into a new figure </span><br><span class="line">%   PLOTDATA(x,y) plots the data points and gives the figure axes labels of</span><br><span class="line">%   population and profit.</span><br><span class="line"></span><br><span class="line">figure; % open a new figure window</span><br><span class="line"></span><br><span class="line">% ====================== YOUR CODE HERE ======================</span><br><span class="line">% Instructions: Plot the training data into a figure using the </span><br><span class="line">%               &quot;figure&quot; and &quot;plot&quot; commands. Set the axes labels using</span><br><span class="line">%               the &quot;xlabel&quot; and &quot;ylabel&quot; commands. Assume the </span><br><span class="line">%               population and revenue data have been passed in</span><br><span class="line">%               as the x and y arguments of this function.</span><br><span class="line">%</span><br><span class="line">% Hint: You can use the &apos;rx&apos; option with plot to have the markers</span><br><span class="line">%       appear as red crosses. Furthermore, you can make the</span><br><span class="line">%       markers larger by using plot(..., &apos;rx&apos;, &apos;MarkerSize&apos;, 10);</span><br><span class="line"></span><br><span class="line">plot(x, y, &apos;rx&apos;, &apos;MarkerSize&apos;, 10);</span><br><span class="line">xlabel(&apos;Population of City in 10,000s&apos;); </span><br><span class="line">ylabel(&apos;Profit in $10,000s&apos;); </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">% ============================================================</span><br><span class="line"></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+    <h1 id="14-最长公共前缀"><a href="#14-最长公共前缀" class="headerlink" title="14.最长公共前缀"></a>14.最长公共前缀</h1><p>编写一个函数来查找字符串数组中的最长公共前缀。</p>
+<p>如果不存在公共前缀，返回空字符串 “”。</p>
+<p>示例 1:</p>
+<p>输入: [“flower”,”flow”,”flight”]<br>输出: “fl”<br>示例 2:</p>
+<p>输入: [“dog”,”racecar”,”car”]<br>输出: “”<br>解释: 输入不存在公共前缀。<br>说明:</p>
+<p>所有输入只包含小写字母 a-z 。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/longest-common-prefix" target="_blank" rel="noopener">https://leetcode-cn.com/problems/longest-common-prefix</a></p>
+<p>思路 </p>
+<p>首先想到特例，当字符串是空的时候</p>
 
   </article>
   <aside class="table-content" id="site-toc">
@@ -198,7 +199,7 @@
     <span>目录</span>
   </div>
   <div class="table-content-main">
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Programming-Exercise-1-Linear-Regression"><span class="toc-text">Programming Exercise 1: Linear Regression</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Simple-Octave-MATLAB-function"><span class="toc-text">1  Simple Octave/MATLAB function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Linear-regression-with-one-variable"><span class="toc-text">2   Linear regression with one variable</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#14-最长公共前缀"><span class="toc-text">14.最长公共前缀</span></a></li></ol>
   </div>
 </aside>
   
@@ -207,7 +208,7 @@
       
         <div>
           原文链接: 
-          <a href target="_blank">http://shentianren.github.io/2019/05/03/Programming-Exercise-1-Linear-Regression/</a>
+          <a href target="_blank">http://shentianren.github.io/2020/01/12/14-最长公共前缀/</a>
         </div>
       
       <div>
@@ -307,10 +308,10 @@
 
 <div class="bottom-bar">
   <div class="bottom-bar-left">
-    <a href="/2019/05/06/Codeforces-Round-552-Div-3-解题报告/" data-enable="true">
+    <a href="javascript:void(0);" data-enable="false">
       <i class="fa fa-arrow-left"></i>
     </a>
-    <a href="/2019/04/28/HHKB-PRO-BT-开箱测评/" data-enable="true">
+    <a href="/2020/01/05/13-罗马数字转整数/" data-enable="true">
       <i class="fa fa-arrow-right"></i>
     </a>
   </div>
